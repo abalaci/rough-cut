@@ -1,6 +1,12 @@
 ﻿WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddRazorPages();
+IMvcBuilder mvcBuilder = builder.Services
+    .AddRazorPages();
+
+if (builder.Environment.IsDevelopment())
+{
+    mvcBuilder.AddRazorRuntimeCompilation();
+}
 
 WebApplication app = builder.Build();
 
