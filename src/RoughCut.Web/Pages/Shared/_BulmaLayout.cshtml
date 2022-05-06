@@ -11,10 +11,10 @@
     <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
 </head>
 <body>
-    <nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top is-spaced is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">
-            <img src="~/assets/img/logoipsum.svg" height="28">
+            <img src="~/assets/img/logoipsum.svg">
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -26,25 +26,25 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start is-uppercase has-text-weight-medium">
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Interviu
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Cronică
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Flashback
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Carte de Film
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Seriale
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Divertisment
             </a>
-            <a class="navbar-item">
+            <a class="navbar-item" asp-page="/Category">
                 Videoclipuri
             </a>
             </div>
@@ -66,11 +66,9 @@
     @RenderBody()
     <footer class="footer">
         <div class="content has-text-centered">
-          <p>&copy; Rough Cut 2022.</p>
-          <p>
-              Revista Facultății de Teatru și Film a Universității Babeș-Bolyai
-          </p>
+            <p>Revista Facultății de Teatru și Film a Universității Babeș-Bolyai</p>
+            <p>&copy; Rough Cut 2022.</p>
         </div>
-      </footer>
+    </footer>
 </body>
 </html>

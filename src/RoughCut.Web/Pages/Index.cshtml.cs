@@ -34,6 +34,13 @@ public class IndexModel : PageModel
             Description = "Diam lorem rebum dolor consetetur eos sea tempor amet dolor erat dolore iusto sanctus liber duis et laoreet. Rebum accumsan in dolor vero suscipit vel justo dolor. Et sit duo in duo justo vero.",
             ImageUrl = "/assets/img/post-bg.jpg",
             Created = new DateTime(year: 2022, month: 5, day: 1),
+        },
+        new Article
+        {
+            Title = "Accusam sanctus iriure duis kasd.",
+            Description = "Dolore lorem volutpat et kasd ipsum rebum cum sea et ut magna. No duo sed elitr. Eos et te rebum. Labore lobortis diam sit autem diam tempor eirmod in sed elitr sit gubergren sea ut. Kasd takimata consequat sit clita eu facilisis lorem no et aliquyam clita iriure eirmod amet nulla labore lorem accusam.",
+            ImageUrl = "/assets/img/post-sample-image.jpg",
+            Created = new DateTime(year: 2022, month: 4, day: 29),
         }
     };
 

@@ -2,5 +2,8 @@
 bin/
 obj/
 
-# Visual Studio cache/options directory
+# User-specific files
+*.user
+
+# Visual Studio cache directory
 .vs/
