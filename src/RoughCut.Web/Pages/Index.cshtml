@@ -5,35 +5,43 @@
 }
 
 <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="content has-text-centered">
-                <p>Latest article picture</p>
-                <p class="title">@Model.LatestArticle.Title</p>
-                <p class="subtitle">@Model.LatestArticle.Description</p>
+    <div class="hero-body">
+        <div class="columns is-centered">
+            <div class="column is-three-fifths">
+                <div class="content has-text-centered">
+                    <figure class="image">
+                        <img src="@Model.LatestArticle.ImageUrl" />
+                    </figure>
+                    <p class="title">@Model.LatestArticle.Title</p>
+                    <p class="subtitle">@Model.LatestArticle.Description</p>
+                </div>
             </div>
         </div>
-      </section>
-    <section class="section has-background-light">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-two-thirds">
+    </div>
+</section>
+<section class="section has-background-light">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-two-thirds">
                 @foreach (var article in Model.Articles[1..])
                 {
                     <div class="card mb-4">
                         <div class="card-content">
                             <div class="columns">
                                 <div class="column is-one-third">
-                                    Article picture
+                                    <figure class="image">
+                                        <img src="@article.ImageUrl" />
+                                    </figure>
                                 </div>
                                 <div class="column">
                                     <p class="title">@article.Title</p>
                                     <p class="subtitle">@article.Description</p>
                                 </div>
-                              </div>
+                            </div>
                         </div>
                     </div>
                 }
-                </div>
-              </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
