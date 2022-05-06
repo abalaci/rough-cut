@@ -17,21 +17,21 @@ public class IndexModel : PageModel
         new Article
         {
             Title = "Et delenit dignissim facilisis tempor voluptua",
-            Description = "Ea sea sadipscing amet facilisis justo aliquam labore. Invidunt justo elitr nonumy at sed. Vulputate ut voluptua diam id magna sed lobortis sed ut molestie justo amet est. Diam dolore sanctus stet vel et. Augue ut sed sadipscing at dolore justo rebum lorem amet est ut imperdiet ullamcorper diam dolore et blandit dolores.",
+            Description = "Ea sea sadipscing amet facilisis justo aliquam labore. Invidunt justo elitr nonumy at sed. Vulputate ut voluptua diam id magna sed lobortis sed ut molestie justo amet est. Diam dolore sanctus stet vel et.",
             ImageUrl = "/assets/img/about-bg.jpg",
             Created = new DateTime(year: 2022, month: 5, day: 2),
         },
         new Article
         {
             Title = "Diam nihil diam sanctus ipsum gubergren sit eos ut exerci.",
-            Description = "Justo nam amet dolore takimata lorem minim sit sea eirmod ipsum tempor diam no ipsum. Duis velit dolore diam voluptua at esse nulla facilisis exerci gubergren laoreet dolor dolore ea diam. Dolor ut nonumy eu eos. Dolore duis volutpat illum. Sea no sit duo sit voluptua et dignissim. Et eos sed labore.",
+            Description = "Justo nam amet dolore takimata lorem minim sit sea eirmod ipsum tempor diam no ipsum. Duis velit dolore diam voluptua at esse nulla facilisis exerci gubergren laoreet dolor dolore ea diam. Dolor ut nonumy eu eos.",
             ImageUrl = "/assets/img/contact-bg.jpg",
             Created = new DateTime(year: 2022, month: 5, day: 1),
         },
         new Article
         {
             Title = "Est erat enim diam labore diam ipsum aliquyam dignissim",
-            Description = "Diam lorem rebum dolor consetetur eos sea tempor amet dolor erat dolore iusto sanctus liber duis et laoreet. Rebum accumsan in dolor vero suscipit vel justo dolor. Et sit duo in duo justo vero. Clita at ipsum feugiat eos gubergren et dolor. Facer duo justo et diam amet justo kasd magna nam eirmod.",
+            Description = "Diam lorem rebum dolor consetetur eos sea tempor amet dolor erat dolore iusto sanctus liber duis et laoreet. Rebum accumsan in dolor vero suscipit vel justo dolor. Et sit duo in duo justo vero.",
             ImageUrl = "/assets/img/post-bg.jpg",
             Created = new DateTime(year: 2022, month: 5, day: 1),
         }
