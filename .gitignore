@@ -2,6 +2,9 @@
 bin/
 obj/
 
+# Placeholder files
+.placeholder
+
 # User-specific files
 *.user
 
