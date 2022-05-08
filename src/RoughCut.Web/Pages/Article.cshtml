@@ -1,7 +1,8 @@
 @page "/articole/exemplu"
 @model RoughCut.Web.Pages.ArticleModel
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData[ViewDataKey.Title] = Model.Title;
+    IFormatProvider format = new CultureInfo("ro-Ro");
 }
 
 <section class="hero is-primary pt-4">
@@ -13,6 +14,7 @@
                         <img src="@Model.ImageUrl" />
                     </figure>
                     <p class="title">@Model.Title</p>
+                    <p class="subtitle">De @Model.Author.Name în @Model.CreatedDate.ToString(format)</p>
                 </div>
             </div>
         </div>

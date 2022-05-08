@@ -1,7 +1,8 @@
 @page "/categorii/exemplu"
 @model RoughCut.Web.Pages.CategoryModel
 @{
-    ViewData["Title"] = @Model.Name;
+    ViewData[ViewDataKey.Title] = @Model.Name;
+    IFormatProvider format = new CultureInfo("ro-Ro");
 }
 
 <section class="hero is-primary pt-4">
@@ -29,7 +30,7 @@
 <section class="section has-background-light">
     <div class="container">
         <div class="columns is-centered">
-            <div class="column is-two-thirds-desktop">
+            <div class="column is-four-fifths-desktop">
                 @foreach (var article in Model.Articles[1..])
                 {
                     <div class="card mb-4">
@@ -49,6 +50,7 @@
                                         </a>
                                         </p>
                                     <p class="subtitle">@article.Description</p>
+                                    <p>De @article.Author.Name în @article.CreatedDate.ToString(format)</p>
                                 </div>
                             </div>
                         </div>
