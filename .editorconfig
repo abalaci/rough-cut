@@ -12,3 +12,6 @@ trim_trailing_whitespace = true
 
 [*.cs]
 dotnet_sort_system_directives_first = true
+
+[*.json]
+indent_size = 2

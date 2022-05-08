@@ -1,12 +1,6 @@
-﻿WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-IMvcBuilder mvcBuilder = builder.Services
-    .AddRazorPages();
-
-if (builder.Environment.IsDevelopment())
-{
-    mvcBuilder.AddRazorRuntimeCompilation();
-}
+builder.Services.AddOrchardCms();
 
 WebApplication app = builder.Build();
 
@@ -17,8 +11,6 @@ if (builder.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseRouting();
-
-app.MapRazorPages();
+app.UseOrchardCore();
 
 app.Run();
