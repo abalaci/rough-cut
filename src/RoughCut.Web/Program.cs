@@ -1,4 +1,7 @@
-﻿WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+using RoughCut.Web.Repositories;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRepositories();
 
 IMvcBuilder mvcBuilder = builder.Services
     .AddRazorPages();
