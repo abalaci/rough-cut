@@ -28,7 +28,7 @@ namespace RoughCut.Web.Pages
 
         public void OnGet()
         {
-            var result = _articlesRepository.GetByAlias("lorem-ipsum-dolor-sit-amet");
+            var result = _articlesRepository.GetByAlias("interviu-luchian-ciobanu");
 
             if (result.Status == QueryResultStatus.NotFound)
             {
