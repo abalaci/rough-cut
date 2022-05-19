@@ -1,0 +1,58 @@
+@page "/autori/exemplu"
+@model RoughCut.Web.Pages.AuthorModel
+@using RoughCut.Web.Models
+@{
+    ViewData[ViewDataKey.Title] = "Author";
+    IFormatProvider format = new CultureInfo("ro-Ro");
+}
+
+<section class="hero is-primary pt-4">
+    <div class="hero-body">
+        <div class="columns is-centered">
+            <div class="column is-three-fifths-desktop">
+                <div class="content has-text-centered">
+                    <h1 class="title">
+                        <span class="icon is-large">
+                            <i class="bi bi-person-circle"></i>
+                        </span>
+                        <span>@Model.Name</span>
+                    </h1>
+                    <p class="subtitle">@Model.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section has-background-light">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-four-fifths-desktop">
+                @foreach (Article article in Model.Articles)
+                {
+                    <div class="card mb-4">
+                        <div class="card-content">
+                            <div class="columns is-vcentered">
+                                <div class="column is-one-third">
+                                    <figure class="image">
+                                        <a asp-page="/Article">
+                                            <img src="@article.ImageUrl" alt="@article.Title" />
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="column">
+                                    <p class="title">
+                                        <a asp-page="/Article">
+                                            @article.Title
+                                        </a>
+                                    </p>
+                                    <p class="subtitle">@article.Description</p>
+                                    <p>În @article.CreatedDate.ToString(format)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
