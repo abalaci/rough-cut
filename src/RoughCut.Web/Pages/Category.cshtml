@@ -1,5 +1,5 @@
-@page "/categorii/exemplu"
-@model RoughCut.Web.Pages.CategoryModel
+@page "/categorii/{categoryAlias}"
+@model RoughCut.Web.Pages.CategoryPageModel
 @{
     ViewData[ViewDataKey.Title] = @Model.Name;
     IFormatProvider format = new CultureInfo("ro-Ro");

@@ -1,3 +1,10 @@
+@using RoughCut.Web.Models
+@using RoughCut.Web.Repositories.Abstractions
+@inject ICategoriesRepository CategoriesRepository
+@{
+    IEnumerable<Category> categories = await CategoriesRepository.GetAllAsync();
+}
+
 <!DOCTYPE html>
 <html lang="ro" class="has-navbar-fixed-top">
 <head>
@@ -27,27 +34,12 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start is-uppercase has-text-weight-medium">
-            <a class="navbar-item" asp-page="/Category">
-                Interviu
-            </a>
-            <a class="navbar-item" asp-page="/Category">
-                Cronică
-            </a>
-            <a class="navbar-item" asp-page="/Category">
-                Flashback
-            </a>
-            <a class="navbar-item" asp-page="/Category">
-                Carte de Film
-            </a>
-            <a class="navbar-item" asp-page="/Category">
-                Seriale
-            </a>
-            <a class="navbar-item" asp-page="/Category">
-                Divertisment
-            </a>
-            <a class="navbar-item" asp-page="/Category">
-                Videoclipuri
-            </a>
+              @foreach (Category category in categories)
+              {
+                <a class="navbar-item" asp-page="/Category" asp-route-categoryAlias="@category.Alias">
+                    @category.Name
+                </a>
+              }
             </div>
           </div>
 
