@@ -5,7 +5,7 @@ namespace RoughCut.Web.Repositories
 {
     internal class InMemoryArticlesRepository : IArticlesRepository
     {
-        private static readonly IReadOnlyDictionary<string, Article> _articles =
+        private static readonly IReadOnlyDictionary<string, Article> _articlesByAlias =
             new Dictionary<string, Article>(StringComparer.OrdinalIgnoreCase)
             {
                 ["interviu-luchian-ciobanu"] = new Article
@@ -55,19 +55,21 @@ namespace RoughCut.Web.Repositories
                 }
             };
 
-        public QueryResult<Article> GetByAlias(string alias)
-        {
-            if (!_articles.ContainsKey(alias))
-            {
-                return QueryResult<Article>.NotFound;
-            }
-
-            return new QueryResult<Article>(_articles[alias]);
-        }
+        public Task<Article?> GetByAliasAsync(string alias) => Task.FromResult(GetByAlias(alias));
 
         public Article[] GetByAuthor(string authorId)
         {
-            return _articles.Values.Where(a => a.Author.Id == authorId).ToArray();
+            return _articlesByAlias.Values.Where(a => a.Author.Id == authorId).ToArray();
+        }
+
+        private static Article? GetByAlias(string alias)
+        {
+            if (_articlesByAlias.ContainsKey(alias))
+            {
+                return _articlesByAlias[alias];
+            }
+
+            return default;
         }
     }
 }

@@ -1,6 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RoughCut.Web.Models;
-using RoughCut.Web.Repositories;
 using RoughCut.Web.Repositories.Abstractions;
 
 namespace RoughCut.Web.Pages
@@ -26,24 +26,22 @@ namespace RoughCut.Web.Pages
             _articlesRepository = articlesRepository;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
-            var result = _articlesRepository.GetByAlias("interviu-luchian-ciobanu");
+            Article? article = await _articlesRepository.GetByAliasAsync("interviu-luchian-ciobanu");
 
-            if (result.Status == QueryResultStatus.NotFound)
+            if (article is null)
             {
-                // TODO: Return "Not Found" page.
+                return NotFound();
             }
 
-            Article? article = result.Entity;
-            if (article is not null)
-            {
-                Author = article.Author;
-                Body = article.Body;
-                Created = article.Created;
-                ImageUrl = article.ImageUrl;
-                Title = article.Title;
-            }
+            Author = article.Author;
+            Body = article.Body;
+            Created = article.Created;
+            ImageUrl = article.ImageUrl;
+            Title = article.Title;
+
+            return Page();
         }
     }
 }
