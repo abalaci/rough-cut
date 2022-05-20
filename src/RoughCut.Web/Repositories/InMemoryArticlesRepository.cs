@@ -11,7 +11,11 @@ namespace RoughCut.Web.Repositories
                 ["interviu-luchian-ciobanu"] = new Article
                 {
                     Alias = "interviu-luchian-ciobanu",
-                    Author = new Author { Name = "Mara Crișan" },
+                    Author = new Author
+                    {
+                        Id = "mara.crisan",
+                        Name = "Mara Crișan"
+                    },
                     Body = @"<p><strong>Pregătind acest interviu, am găsit foarte puţine informaţii despre dumneavoastră. Aş vrea să știu de ce?</strong></p>
                     <p>Nu cred că m-a întrebat nimeni mai mult decât exista deja pe internet, dar e adevărat că încerc să pun o barieră între viața personală și cea profesională. Cred că sunt construit de așa natură încât nu pot subscrie la acest curent de a mă pune în primul plan, cu toate că știu că acesta e curentul: ""Dacă nu ești pe social-media nu exiști"", doar că nu mă interesează, pentru că e o falsă senzație că lucrurile funcționează așa. Adică, nu îmi fac selfies, nu postez fotografii cu mine nicăieri. Mi se pare că nu e important ca eu să fiu văzut, mai degrabă este mai important ceea ce fac.</p>
                     <p><strong>Aţi debutat în lungmetraj acum câţiva ani şi de atunci aţi semnat imaginea unor filme importante. Ca parte activă a breslei cinematografice, cum vi se pare generaţia care vine acum?</strong></p>
@@ -59,6 +63,11 @@ namespace RoughCut.Web.Repositories
             }
 
             return new QueryResult<Article>(_articles[alias]);
+        }
+
+        public Article[] GetByAuthor(string authorId)
+        {
+            return _articles.Values.Where(a => a.Author.Id == authorId).ToArray();
         }
     }
 }

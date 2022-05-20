@@ -5,5 +5,7 @@ namespace RoughCut.Web.Repositories.Abstractions
     public interface IArticlesRepository
     {
         QueryResult<Article> GetByAlias(string alias);
+
+        Article[] GetByAuthor(string authorId);
     }
 }
