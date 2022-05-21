@@ -2,7 +2,6 @@
 @model IndexModel
 @{
     ViewData[ViewDataKey.Title] = "Acasă";
-    IFormatProvider format = new CultureInfo("ro-Ro");
 }
 
 <section class="hero is-primary pt-4">
@@ -49,7 +48,7 @@
                                         </a>
                                         </p>
                                     <p class="subtitle">@article.Description</p>
-                                    <p>De @article.Author.Name în @article.CreatedDate.ToString(format)</p>
+                                    <p>De @article.Author.Name în <date on="article.CreatedDate"></date></p>
                                 </div>
                             </div>
                         </div>
