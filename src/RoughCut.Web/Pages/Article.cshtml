@@ -9,11 +9,14 @@
         <div class="columns is-centered">
             <div class="column is-three-fifths-desktop">
                 <div class="content has-text-centered">
+                    <p class="title">@Model.Title</p>
+                    <p class="subtitle">De @Model.Author.Name, în <date on="Model.CreatedDate"></date></p>
                     <figure class="image">
                         <img src="@Model.ImageUrl" />
                     </figure>
-                    <p class="title">@Model.Title</p>
-                    <p class="subtitle">De @Model.Author.Name în <date on="Model.CreatedDate"></date></p>
+                    <p class="subtitle is-uppercase is-underlined">
+                        <a asp-page="/Category" asp-route-categoryAlias="@Model.Category.Alias">@Model.Category.Name</a>
+                    </p>
                 </div>
             </div>
         </div>

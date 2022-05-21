@@ -11,6 +11,8 @@ namespace RoughCut.Web.Pages
 
         public string Body { get; set; } = string.Empty;
 
+        public Category Category { get; set; } = new Category();
+
         public string Title { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
         public Uri ImageUrl { get; set; } = new Uri("/assets/img/post-sample-image.jpg", UriKind.Relative);
@@ -37,6 +39,7 @@ namespace RoughCut.Web.Pages
 
             Author = article.Author;
             Body = article.Body;
+            Category = article.Category;
             Created = article.Created;
             ImageUrl = article.ImageUrl;
             Title = article.Title;
