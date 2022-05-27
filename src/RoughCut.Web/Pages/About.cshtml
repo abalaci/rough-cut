@@ -1,0 +1,50 @@
+@page "/despre-noi"
+@using RoughCut.Web.Models
+@model RoughCut.Web.Pages.AboutModel
+@{
+    ViewData[ViewDataKey.Title] = "Despre Noi";
+}
+
+<section class="hero is-primary pt-4">
+    <div class="hero-body">
+        <div class="columns is-centered">
+            <div class="column is-three-fifths-desktop">
+                <div class="content has-text-justified">
+                    <p class="subtitle">Amet no dolores sit kasd praesent sed eirmod eirmod stet duis dolor vel duis. Illum nulla lorem tation dolor vero vel dolore duo aliquyam et amet velit kasd. Eirmod justo dolor sit rebum amet lorem molestie. Lorem suscipit magna dolor voluptua sit et ut ipsum nibh illum at et. Takimata voluptua sadipscing lorem dolores et. Nisl et facer et eirmod id sit ipsum ut aliquyam lorem sit euismod ipsum magna et sanctus. Ea autem ea sadipscing rebum labore invidunt. Sed quis clita accusam dolor magna ad invidunt et.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section has-background-light">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-four-fifths-desktop">
+                @foreach (Author author in Model.Authors)
+                {
+                    <div class="card mb-4">
+                        <div class="card-content">
+                            <div class="columns is-vcentered">
+                                <div class="column is-one-third">
+                                    <figure class="image">
+                                        <span class="icon is-large">
+                                            <i class="bi bi-person-circle"></i>
+                                        </span>
+                                    </figure>
+                                </div>
+                                <div class="column">
+                                    <p class="title">
+                                        <a asp-page="/Article">
+                                        @author.Name
+                                        </a>
+                                        </p>
+                                    <p class="subtitle">@author.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

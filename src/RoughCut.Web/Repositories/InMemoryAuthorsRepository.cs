@@ -27,5 +27,7 @@ namespace RoughCut.Web.Repositories
 
             return _authors[id];
         }
+
+        public Task<IReadOnlyList<Author>> GetAllAsync() => Task.FromResult(_authors.Values.ToList() as IReadOnlyList<Author>);
     }
 }
