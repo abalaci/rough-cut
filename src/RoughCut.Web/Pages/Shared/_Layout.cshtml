@@ -18,8 +18,8 @@
 <body>
     <nav class="navbar is-fixed-top is-spaced is-primary" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src="~/logo-dark.svg">
+          <a class="navbar-item p-0" href="/">
+            <img src="~/logo-dark.svg" alt="Rough Cut logo on dark background">
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -44,20 +44,22 @@
             <div class="navbar-item">
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Caută articole" />
                         <span class="icon is-small is-left">
                             <i class="bi bi-search"></i>
                         </span>
+                        <input class="input" type="text" placeholder="Caută" />
                     </p>
                 </div>
             </div>
         </div>
     </nav>
-    @RenderBody()
+    <main class="is-family-secondary has-background-light">
+        @RenderBody()
+    </main>
     <footer class="footer">
         <div class="content has-text-centered">
             <p class="is-size-5">
-                Revista <a href="https://teatrufilm.ubbcluj.ro/">Facultății de Teatru și Film</a> a Universității Babeș-Bolyai
+                Revistă suținută de <a href="https://teatrufilm.ubbcluj.ro/">Facultatea de Teatru și Film</a> a Universității Babeș-Bolyai
             </p>
             <p>&copy; Rough Cut 2022.</p>
         </div>
