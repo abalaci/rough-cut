@@ -6,7 +6,7 @@ namespace RoughCut.Web.Models
 
         public string Body { get; set; } = string.Empty;
 
-        public Category Category { get; set; } = new Category();
+        public IReadOnlyList<Category> Categories { get; set; } = Array.Empty<Category>();
 
         public string Title { get; set; } = string.Empty;
 

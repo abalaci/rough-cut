@@ -11,7 +11,7 @@ namespace RoughCut.Web.Pages
 
         public string Body { get; set; } = string.Empty;
 
-        public Category Category { get; set; } = new Category();
+        public IReadOnlyList<Category> Categories { get; set; } = Array.Empty<Category>();
 
         public string Title { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
@@ -39,7 +39,7 @@ namespace RoughCut.Web.Pages
 
             Author = article.Author;
             Body = article.Body;
-            Category = article.Category;
+            Categories = article.Categories;
             Created = article.Created;
             ImageUrl = article.ImageUrl;
             Title = article.Title;
