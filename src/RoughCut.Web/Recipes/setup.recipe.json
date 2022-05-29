@@ -4,16 +4,17 @@
   "description": "Provides the setup for Rough Cut magazine.",
   "author": "Andrei Balaci",
   "website": "https://github.com/abalaci/rough-cut",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "issetuprecipe": true,
   "categories": [ "custom" ],
   "tags": [ "magazine" ],
   // Variables are evaluated the first time they are accessed, and then reused across steps.
   "variables": {
     "adminUrlPrefix": "[js: configuration('OrchardCore_Admin:AdminUrlPrefix', 'Admin')]",
-    "blogContentItemId": "[js:uuid()]",
-    "categoriesContentItemId": "[js:uuid()]",
-    "categoryTravelContentItemId": "[js:uuid()]"
+    "articlesContentItemId": "[js:uuid()]",
+    "categoriesContentItemId": "4dsg59gyd54zp2ntr7b32bsm4x",
+    "categoryInterviewContentItemId": "[js:uuid()]",
+    "categoryReviewContentItemId": "[js:uuid()]"
   },
   "steps": [
     {
@@ -78,7 +79,7 @@
         "Action": "Display",
         "Controller": "Item",
         "Area": "OrchardCore.Contents",
-        "ContentItemId": "[js: variables('blogContentItemId')]"
+        "ContentItemId": "[js: variables('articlesContentItemId')]"
       },
       "LayerSettings": {
         "Zones": [ "Content", "Footer" ]
@@ -137,6 +138,43 @@
                 "ContentTypePartSettings": {
                   "Editor": "Wysiwyg",
                   "Position": "2"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Category",
+          "DisplayName": "Category",
+          "Settings": {
+            "ContentTypeSettings": {},
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "AliasPart",
+              "Name": "AliasPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "Category",
+              "Name": "Category",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
                 }
               }
             }
@@ -301,29 +339,6 @@
           ]
         },
         {
-          "Name": "RawHtml",
-          "DisplayName": "Raw Html",
-          "Settings": {
-            "ContentTypeSettings": {
-              "Draftable": true,
-              "Versionable": true,
-              "Securable": true,
-              "Stereotype": "Widget"
-            }
-          },
-          "ContentTypePartDefinitionRecords": [
-            {
-              "PartName": "RawHtml",
-              "Name": "RawHtml",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                }
-              }
-            }
-          ]
-        },
-        {
           "Name": "Page",
           "DisplayName": "Page",
           "Settings": {
@@ -374,48 +389,6 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "0"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "Name": "Category",
-          "DisplayName": "Category",
-          "Settings": {
-            "ContentTypeSettings": {},
-            "FullTextAspectSettings": {}
-          },
-          "ContentTypePartDefinitionRecords": [
-            {
-              "PartName": "Category",
-              "Name": "Category",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "1"
-                }
-              }
-            },
-            {
-              "PartName": "TitlePart",
-              "Name": "TitlePart",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                }
-              }
-            },
-            {
-              "PartName": "AutoroutePart",
-              "Name": "AutoroutePart",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "2"
-                },
-                "AutoroutePartSettings": {
-                  "AllowCustomPath": true,
-                  "Pattern": "{{ Model.ContentItem | display_text | slugify }}",
-                  "ManageContainedItemRoutes": true
                 }
               }
             }
@@ -498,7 +471,6 @@
                 "ContentIndexSettings": {},
                 "TaxonomyFieldSettings": {
                   "TaxonomyContentItemId": "[js: variables('categoriesContentItemId')]",
-                  "Unique": true,
                   "LeavesOnly": true
                 }
               }
@@ -558,23 +530,6 @@
           ]
         },
         {
-          "Name": "RawHtml",
-          "Settings": {},
-          "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "HtmlField",
-              "Name": "Content",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Content",
-                  "Position": "0",
-                  "Editor": "Multiline"
-                }
-              }
-            }
-          ]
-        },
-        {
           "Name": "Category",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
@@ -609,6 +564,7 @@
               "Article",
               "Blog",
               "Button",
+              "Category",
               "Container",
               "Form",
               "ImageWidget",
@@ -617,8 +573,8 @@
               "Label",
               "Page",
               "Paragraph",
-              "RawHtml",
               "Select",
+              "Taxonomy",
               "TextArea",
               "Validation",
               "ValidationSummary"
@@ -671,19 +627,38 @@
           "TaxonomyPart": {
             "Terms": [
               {
-                "ContentItemId": "[js: variables('categoryTravelContentItemId')]",
+                "ContentItemId": "[js: variables('categoryInterviewContentItemId')]",
                 "ContentType": "Category",
-                "DisplayText": "Travel",
+                "DisplayText": "Interviu",
                 "Category": {
                   "Icon": {
-                    "Text": "fas fa-globe-americas"
+                    "Text": "fas fa-microphone"
                   }
                 },
                 "TitlePart": {
-                  "Title": "Travel"
+                  "Title": "Interviu"
                 },
-                "AutoroutePart": {
-                  "Path": "travel"
+                "AliasPart": {
+                  "Alias": "interviu"
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('categoriesContentItemId')]"
+                }
+              },
+              {
+                "ContentItemId": "[js: variables('categoryReviewContentItemId')]",
+                "ContentType": "Category",
+                "DisplayText": "Cronică",
+                "Category": {
+                  "Icon": {
+                    "Text": "fas fa-pen"
+                  }
+                },
+                "TitlePart": {
+                  "Title": "Cronică"
+                },
+                "AliasPart": {
+                  "Alias": "cronica"
                 },
                 "TermPart": {
                   "TaxonomyContentItemId": "[js: variables('categoriesContentItemId')]"
@@ -699,8 +674,8 @@
         },
         {
           "ContentType": "Blog",
-          "ContentItemId": "[js: variables('blogContentItemId')]",
-          "DisplayText": "Blog",
+          "ContentItemId": "[js: variables('articlesContentItemId')]",
+          "DisplayText": "Articles",
           "Latest": true,
           "Published": true,
           "Owner": "[js: parameters('AdminUserId')]",
@@ -735,16 +710,16 @@
         {
           "ContentType": "Article",
           "ContentItemId": "[js: uuid()]",
-          "DisplayText": "Man must explore, and this is exploration at its greatest",
+          "DisplayText": "Interviu cu Luchian Ciobanu",
           "Latest": true,
           "Published": true,
           "Owner": "[js: parameters('AdminUserId')]",
           "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
-            "Title": "Man must explore, and this is exploration at its greatest"
+            "Title": "Interviu cu Luchian Ciobanu"
           },
           "ContainedPart": {
-            "ListContentItemId": "[js: variables('blogContentItemId')]",
+            "ListContentItemId": "[js: variables('articlesContentItemId')]",
             "Order": 0
           },
           "HtmlBodyPart": {
@@ -755,7 +730,7 @@
           },
           "Article": {
             "Subtitle": {
-              "Text": "Problems look mighty small from 150 miles up"
+              "Text": ""
             },
             "Image": {
               "Paths": [
@@ -773,7 +748,7 @@
             },
             "Category": {
               "TermContentItemIds": [
-                "[js: variables('categoryTravelContentItemId')]"
+                "[js: variables('categoryInterviewContentItemId')]"
               ],
               "TaxonomyContentItemId": "[js: variables('categoriesContentItemId')]"
             }
@@ -785,8 +760,16 @@
       "name": "media",
       "Files": [
         {
+          "TargetPath": "interviu-luchian-ciobanu_2022-05-12.png",
+          "SourcePath": "../wwwroot/assets/img/interviu-luchian-ciobanu_2022-05-12.png"
+        },
+        {
           "TargetPath": "about-bg.jpg",
           "SourcePath": "../wwwroot/assets/img/about-bg.jpg"
+        },
+        {
+          "TargetPath": "contact-bg.jpg",
+          "SourcePath": "../wwwroot/assets/img/contact-bg.jpg"
         },
         {
           "TargetPath": "home-bg.jpg",
@@ -795,6 +778,10 @@
         {
           "TargetPath": "post-bg.jpg",
           "SourcePath": "../wwwroot/assets/img/post-bg.jpg"
+        },
+        {
+          "TargetPath": "post-sample-image.jpg",
+          "SourcePath": "../wwwroot/assets/img/post-sample-image.jpg"
         }
       ]
     },
