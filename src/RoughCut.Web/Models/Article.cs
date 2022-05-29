@@ -18,6 +18,6 @@ namespace RoughCut.Web.Models
 
         public DateOnly CreatedDate => DateOnly.FromDateTime(Created.Date);
 
-        public Author Author { get; set; } = new Author { Name = "John Doe" };
+        public Author Author { get; set; } = new Author();
     }
 }

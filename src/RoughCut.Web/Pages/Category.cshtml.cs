@@ -45,9 +45,9 @@ namespace RoughCut.Web.Pages
             _categoriesRepository = categoriesRepository;
         }
 
-        public async Task<IActionResult> OnGet(string categoryAlias)
+        public async Task<IActionResult> OnGet(string alias)
         {
-            Category? category = await _categoriesRepository.GetByAliasAsync(categoryAlias);
+            Category? category = await _categoriesRepository.GetByAliasAsync(alias);
 
             if (category is null)
             {

@@ -1,4 +1,4 @@
-@page "/articole/exemplu"
+@page "/articole/{alias}"
 @model RoughCut.Web.Pages.ArticleModel
 @{
     ViewData[ViewDataKey.Title] = Model.Title;
@@ -17,9 +17,9 @@
                     <p class="subtitle is-uppercase is-underlined">
                         @for (int i = 0; i < Model.Categories.Count - 1; i++)
                         {
-                        <a asp-page="/Category" asp-route-categoryAlias="@Model.Categories[i].Alias">@Model.Categories[i].Name</a> <span>/</span>
+                        <a asp-page="/Category" asp-route-alias="@Model.Categories[i].Alias">@Model.Categories[i].Name</a> <span>/</span>
                         }
-                        <a asp-page="/Category" asp-route-categoryAlias="@Model.Categories[Model.Categories.Count -1].Alias">@Model.Categories[Model.Categories.Count - 1].Name</a>
+                        <a asp-page="/Category" asp-route-alias="@Model.Categories[Model.Categories.Count -1].Alias">@Model.Categories[Model.Categories.Count - 1].Name</a>
                     </p>
                 </div>
             </div>

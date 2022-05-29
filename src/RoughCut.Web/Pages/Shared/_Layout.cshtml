@@ -33,7 +33,7 @@
           <div class="navbar-start is-uppercase has-text-weight-medium">
               @foreach (Category category in categories)
               {
-                <a class="navbar-item" asp-page="/Category" asp-route-categoryAlias="@category.Alias">
+                <a class="navbar-item" asp-page="/Category" asp-route-alias="@category.Alias">
                     @category.Name
                 </a>
               }

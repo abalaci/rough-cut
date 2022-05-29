@@ -28,9 +28,9 @@ namespace RoughCut.Web.Pages
             _articlesRepository = articlesRepository;
         }
 
-        public async Task<IActionResult> OnGet()
+        public async Task<IActionResult> OnGet(string alias)
         {
-            Article? article = await _articlesRepository.GetByAliasAsync("interviu-luchian-ciobanu");
+            Article? article = await _articlesRepository.GetByAliasAsync(alias);
 
             if (article is null)
             {

@@ -37,7 +37,7 @@ namespace RoughCut.Web.Pages
             Description = author.Description;
             Name = author.Name;
 
-            Articles = _articlesRepository.GetByAuthor(authorId);
+            Articles = await _articlesRepository.GetByAuthorAsync(authorId);
 
             return Page();
         }

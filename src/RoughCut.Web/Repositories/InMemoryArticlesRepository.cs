@@ -13,7 +13,7 @@ namespace RoughCut.Web.Repositories
                     Alias = "interviu-luchian-ciobanu",
                     Author = new Author
                     {
-                        Id = "mara.crisan",
+                        Id = "mara-crisan",
                         Name = "Mara Crișan"
                     },
                     Body = @"<p><strong>Pregătind acest interviu, am găsit foarte puţine informaţii despre dumneavoastră. Aş vrea să știu de ce?</strong></p>
@@ -53,15 +53,76 @@ namespace RoughCut.Web.Repositories
                     Created = new DateTime(year: 2022, month: 5, day: 12),
                     ImageUrl = new Uri("/assets/img/interviu-luchian-ciobanu_mara-crisan.png", UriKind.Relative),
                     Title = "Interviu cu Luchian Ciobanu",
-                }
+                },
+                ["dolores-no-illum magna-sanctus-et-lorem-enim-te-quod-accusam-duo"] = new Article
+                {
+                    Author = new Author
+                    {
+                        Id = "john-doe",
+                        Name = "John Doe"
+                    },
+                    Title = "Dolores no illum magna sanctus et lorem enim te quod accusam duo",
+                    Description = "Elitr enim consetetur erat eos vel sea sed nonumy elitr lobortis lorem invidunt nisl. Facilisi erat rebum rebum sed est augue et possim nonummy invidunt elitr consequat sed sea accusam nonumy.",
+                    ImageUrl = new Uri("/assets/img/home-bg.jpg", UriKind.Relative),
+                    Created = new DateTime(year: 2022, month: 5, day: 3),
+                },
+                ["et-delenit-dignissim-facilisis-tempor-voluptua"] = new Article
+                {
+                    Author = new Author
+                    {
+                        Id = "john-doe",
+                        Name = "John Doe"
+                    },
+                    Title = "Et delenit dignissim facilisis tempor voluptua",
+                    Description = "Ea sea sadipscing amet facilisis justo aliquam labore. Invidunt justo elitr nonumy at sed. Vulputate ut voluptua diam id magna sed lobortis sed ut molestie justo amet est. Diam dolore sanctus stet vel et.",
+                    ImageUrl = new Uri("/assets/img/about-bg.jpg", UriKind.Relative),
+                    Created = new DateTime(year: 2022, month: 5, day: 2),
+                },
+                ["diam-nihil-sanctus-ipsum-gubergren-sit-eos-ut-exerci"] = new Article
+                {
+                    Author = new Author
+                    {
+                        Id = "john-doe",
+                        Name = "John Doe"
+                    },
+                    Title = "Diam nihil sanctus ipsum gubergren sit eos ut exerci",
+                    Description = "Justo nam amet dolore takimata lorem minim sit sea eirmod ipsum tempor diam no ipsum. Duis velit dolore diam voluptua at esse nulla facilisis exerci gubergren laoreet dolor dolore ea diam. Dolor ut nonumy eu eos.",
+                    ImageUrl = new Uri("/assets/img/contact-bg.jpg", UriKind.Relative),
+                    Created = new DateTime(year: 2022, month: 5, day: 1),
+                },
+                ["est-erat-enim-diam-labore-ipsum-aliquyam-dignissim"] = new Article
+                {
+                    Author = new Author
+                    {
+                        Id = "john-doe",
+                        Name = "John Doe"
+                    },
+                    Title = "Est erat enim diam labore ipsum aliquyam dignissim",
+                    Description = "Diam lorem rebum dolor consetetur eos sea tempor amet dolor erat dolore iusto sanctus liber duis et laoreet. Rebum accumsan in dolor vero suscipit vel justo dolor. Et sit duo in duo justo vero.",
+                    ImageUrl = new Uri("/assets/img/post-bg.jpg", UriKind.Relative),
+                    Created = new DateTime(year: 2022, month: 5, day: 1),
+                },
+                ["accusam-sanctus-iriure-duis-kasd"] = new Article
+                {
+                    Author = new Author
+                    {
+                        Id = "john-doe",
+                        Name = "John Doe"
+                    },
+                    Title = "Accusam sanctus iriure duis kasd",
+                    Description = "Dolore lorem volutpat et kasd ipsum rebum cum sea et ut magna. No duo sed elitr. Eos et te rebum. Labore lobortis diam sit autem diam tempor eirmod in sed elitr sit gubergren sea ut. Kasd takimata consequat sit clita eu facilisis lorem no et aliquyam clita iriure eirmod amet nulla labore lorem accusam.",
+                    ImageUrl = new Uri("/assets/img/post-sample-image.jpg", UriKind.Relative),
+                    Created = new DateTime(year: 2022, month: 4, day: 29),
+                },
             };
+
+        public Task<Article[]> GetAllAsync() =>
+            Task.FromResult(_articlesByAlias.Values.OrderByDescending(a => a.Created).ToArray());
 
         public Task<Article?> GetByAliasAsync(string alias) => Task.FromResult(GetByAlias(alias));
 
-        public Article[] GetByAuthor(string authorId)
-        {
-            return _articlesByAlias.Values.Where(a => a.Author.Id == authorId).ToArray();
-        }
+        public Task<Article[]> GetByAuthorAsync(string authorId) =>
+            Task.FromResult(_articlesByAlias.Values.Where(a => a.Author.Id == authorId).ToArray());
 
         private static Article? GetByAlias(string alias)
         {
