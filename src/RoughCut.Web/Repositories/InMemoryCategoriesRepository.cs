@@ -47,7 +47,8 @@ namespace RoughCut.Web.Repositories
 
         public Task<Category?> GetByAliasAsync(string alias) => Task.FromResult(GetByAlias(alias));
 
-        public Task<IEnumerable<Category>> GetAllAsync() => Task.FromResult(_categoriesByAlias.Values);
+        public Task<IReadOnlyList<Category>> GetAllAsync() =>
+            Task.FromResult<IReadOnlyList<Category>>(_categoriesByAlias.Values.ToList());
 
         private static Category? GetByAlias(string alias)
         {

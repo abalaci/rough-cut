@@ -9,7 +9,7 @@ namespace RoughCut.Web.Repositories
         {
             services.TryAddScoped<IArticlesRepository, InMemoryArticlesRepository>();
             services.TryAddScoped<IAuthorsRepository, InMemoryAuthorsRepository>();
-            services.TryAddScoped<ICategoriesRepository, InMemoryCategoriesRepository>();
+            services.TryAddScoped<ICategoriesRepository, CmsCategoriesRepository>();
 
             return services;
         }
