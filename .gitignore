@@ -2,6 +2,9 @@
 bin/
 obj/
 
+# Node.js modules
+node_modules/
+
 # Placeholder files
 .placeholder
 

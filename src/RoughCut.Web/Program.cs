@@ -1,6 +1,8 @@
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+using RoughCut.Web.Repositories;
 
-builder.Services.AddOrchardCms();
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddRepositories()
+    .AddOrchardCms();
 
 WebApplication app = builder.Build();
 
@@ -11,6 +13,7 @@ if (builder.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseOrchardCore();
 
 app.Run();

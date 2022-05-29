@@ -1,55 +1,58 @@
-@page
+@page "/"
 @model IndexModel
 @{
     ViewData[ViewDataKey.Title] = "Acasă";
-    IFormatProvider format = new CultureInfo("ro-Ro");
 }
 
-<section class="hero is-primary pt-4">
-    <div class="hero-body">
-        <div class="columns is-centered">
-            <div class="column is-three-fifths-desktop">
-                <div class="content has-text-centered">
-                    <figure class="image">
-                        <a asp-page="/Article">
-                            <img src="@Model.LatestArticle.ImageUrl" alt="@Model.LatestArticle.Title" />
-                        </a>
-                    </figure>
-                    <p class="title">
-                        <a asp-page="/Article">
-                            @Model.LatestArticle.Title
-                        </a>
-                    </p>
-                    <p class="subtitle">@Model.LatestArticle.Description</p>
+@if (Model.LatestArticle is not null)
+{
+    <section class="hero is-primary pt-4">
+        <div class="hero-body">
+            <div class="columns is-centered">
+                <div class="column is-three-fifths-desktop">
+                    <div class="content has-text-centered">
+                        <figure class="image">
+                            <a asp-page="/Article" asp-route-alias="@Model.LatestArticle.Alias">
+                                <img src="@Model.LatestArticle.ImageUrl" alt="@Model.LatestArticle.Title" />
+                            </a>
+                        </figure>
+                        <p class="title">
+                            <a asp-page="/Article" asp-route-alias="@Model.LatestArticle.Alias">
+                                @Model.LatestArticle.Title
+                            </a>
+                        </p>
+                        <p class="subtitle">@Model.LatestArticle.Description</p>
+                        <p>De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@Model.LatestArticle.Author.Id">@Model.LatestArticle.Author.Name</a>, în <date on="Model.LatestArticle.CreatedDate"></date></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}
 <section class="section has-background-light">
     <div class="container">
         <div class="columns is-centered">
             <div class="column is-four-fifths-desktop">
-                @foreach (var article in Model.Articles[1..])
+                @foreach (Article article in Model.Articles[1..])
                 {
                     <div class="card mb-4">
                         <div class="card-content">
                             <div class="columns is-vcentered">
                                 <div class="column is-one-third">
                                     <figure class="image">
-                                        <a asp-page="/Article">
+                                        <a asp-page="/Article" asp-route-alias="@article.Alias">
                                         <img src="@article.ImageUrl" alt="@article.Title" />
                                         </a>
                                     </figure>
                                 </div>
                                 <div class="column">
                                     <p class="title">
-                                        <a asp-page="/Article">
+                                        <a asp-page="/Article" asp-route-alias="@article.Alias">
                                         @article.Title
                                         </a>
                                         </p>
                                     <p class="subtitle">@article.Description</p>
-                                    <p>De @article.Author.Name în @article.CreatedDate.ToString(format)</p>
+                                    <p>De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@article.Author.Id">@article.Author.Name</a>, în <date on="article.CreatedDate"></date></p>
                                 </div>
                             </div>
                         </div>

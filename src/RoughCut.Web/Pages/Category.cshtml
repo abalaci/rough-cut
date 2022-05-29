@@ -1,8 +1,7 @@
-@page "/categorii/exemplu"
-@model RoughCut.Web.Pages.CategoryModel
+@page "/categorii/{alias}"
+@model RoughCut.Web.Pages.CategoryPageModel
 @{
     ViewData[ViewDataKey.Title] = @Model.Name;
-    IFormatProvider format = new CultureInfo("ro-Ro");
 }
 
 <section class="hero is-primary pt-4">
@@ -50,7 +49,7 @@
                                         </a>
                                         </p>
                                     <p class="subtitle">@article.Description</p>
-                                    <p>De @article.Author.Name în @article.CreatedDate.ToString(format)</p>
+                                    <p>De @article.Author.Name în <date on="article.CreatedDate"></date></p>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,14 @@
+{
+  "name": "bulma-styles",
+  "version": "0.0.1",
+  "main": "sass/styles.scss",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/styles.scss ../src/RoughCut.Web/wwwroot/css/styles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^7.0.1"
+  }
+}
