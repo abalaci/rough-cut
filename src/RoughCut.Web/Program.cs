@@ -1,8 +1,10 @@
+using RoughCut.Web.Models.ContentParts;
 using RoughCut.Web.Repositories;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-builder.Services.AddRepositories()
-    .AddOrchardCms();
+builder.Services.AddOrchardCms();
+builder.Services.AddContentParts();
+builder.Services.AddRepositories();
 
 WebApplication app = builder.Build();
 

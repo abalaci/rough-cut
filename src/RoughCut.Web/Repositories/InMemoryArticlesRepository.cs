@@ -13,8 +13,8 @@ namespace RoughCut.Web.Repositories
                     Alias = "interviu-luchian-ciobanu",
                     Author = new Author
                     {
-                        Id = "mara-crisan",
-                        Name = "Mara Crișan"
+                        Alias = "mara-crisan",
+                        Title = "Mara Crișan"
                     },
                     Body = @"<p><strong>Pregătind acest interviu, am găsit foarte puţine informaţii despre dumneavoastră. Aş vrea să știu de ce?</strong></p>
                     <p>Nu cred că m-a întrebat nimeni mai mult decât exista deja pe internet, dar e adevărat că încerc să pun o barieră între viața personală și cea profesională. Cred că sunt construit de așa natură încât nu pot subscrie la acest curent de a mă pune în primul plan, cu toate că știu că acesta e curentul: ""Dacă nu ești pe social-media nu exiști"", doar că nu mă interesează, pentru că e o falsă senzație că lucrurile funcționează așa. Adică, nu îmi fac selfies, nu postez fotografii cu mine nicăieri. Mi se pare că nu e important ca eu să fiu văzut, mai degrabă este mai important ceea ce fac.</p>
@@ -58,8 +58,8 @@ namespace RoughCut.Web.Repositories
                 {
                     Author = new Author
                     {
-                        Id = "john-doe",
-                        Name = "John Doe"
+                        Alias = "john-doe",
+                        Title = "John Doe"
                     },
                     Title = "Dolores no illum magna sanctus et lorem enim te quod accusam duo",
                     Description = "Elitr enim consetetur erat eos vel sea sed nonumy elitr lobortis lorem invidunt nisl. Facilisi erat rebum rebum sed est augue et possim nonummy invidunt elitr consequat sed sea accusam nonumy.",
@@ -70,8 +70,8 @@ namespace RoughCut.Web.Repositories
                 {
                     Author = new Author
                     {
-                        Id = "john-doe",
-                        Name = "John Doe"
+                        Alias = "john-doe",
+                        Title = "John Doe"
                     },
                     Title = "Et delenit dignissim facilisis tempor voluptua",
                     Description = "Ea sea sadipscing amet facilisis justo aliquam labore. Invidunt justo elitr nonumy at sed. Vulputate ut voluptua diam id magna sed lobortis sed ut molestie justo amet est. Diam dolore sanctus stet vel et.",
@@ -82,8 +82,8 @@ namespace RoughCut.Web.Repositories
                 {
                     Author = new Author
                     {
-                        Id = "john-doe",
-                        Name = "John Doe"
+                        Alias = "john-doe",
+                        Title = "John Doe"
                     },
                     Title = "Diam nihil sanctus ipsum gubergren sit eos ut exerci",
                     Description = "Justo nam amet dolore takimata lorem minim sit sea eirmod ipsum tempor diam no ipsum. Duis velit dolore diam voluptua at esse nulla facilisis exerci gubergren laoreet dolor dolore ea diam. Dolor ut nonumy eu eos.",
@@ -94,8 +94,8 @@ namespace RoughCut.Web.Repositories
                 {
                     Author = new Author
                     {
-                        Id = "john-doe",
-                        Name = "John Doe"
+                        Alias = "john-doe",
+                        Title = "John Doe"
                     },
                     Title = "Est erat enim diam labore ipsum aliquyam dignissim",
                     Description = "Diam lorem rebum dolor consetetur eos sea tempor amet dolor erat dolore iusto sanctus liber duis et laoreet. Rebum accumsan in dolor vero suscipit vel justo dolor. Et sit duo in duo justo vero.",
@@ -106,12 +106,12 @@ namespace RoughCut.Web.Repositories
                 {
                     Author = new Author
                     {
-                        Id = "john-doe",
-                        Name = "John Doe"
+                        Alias = "john-doe",
+                        Title = "John Doe"
                     },
                     Title = "Accusam sanctus iriure duis kasd",
                     Description = "Dolore lorem volutpat et kasd ipsum rebum cum sea et ut magna. No duo sed elitr. Eos et te rebum. Labore lobortis diam sit autem diam tempor eirmod in sed elitr sit gubergren sea ut. Kasd takimata consequat sit clita eu facilisis lorem no et aliquyam clita iriure eirmod amet nulla labore lorem accusam.",
-                    ImageUrl = new Uri("/assets/img/post-sample-image.jpg", UriKind.Relative),
+                    ImageUrl = new Uri("/assets/img/astronaut.jpg", UriKind.Relative),
                     Created = new DateTime(year: 2022, month: 4, day: 29),
                 },
             };
@@ -122,7 +122,7 @@ namespace RoughCut.Web.Repositories
         public Task<Article?> GetByAliasAsync(string alias) => Task.FromResult(GetByAlias(alias));
 
         public Task<Article[]> GetByAuthorAsync(string authorId) =>
-            Task.FromResult(_articlesByAlias.Values.Where(a => a.Author.Id == authorId).ToArray());
+            Task.FromResult(_articlesByAlias.Values.Where(a => a.Author.Alias == authorId).ToArray());
 
         private static Article? GetByAlias(string alias)
         {

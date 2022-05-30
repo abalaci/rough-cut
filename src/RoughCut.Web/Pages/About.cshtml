@@ -27,18 +27,16 @@
                             <div class="columns is-vcentered">
                                 <div class="column is-one-third">
                                     <figure class="image">
-                                        <span class="icon is-large">
-                                            <i class="bi bi-person-circle"></i>
-                                        </span>
+                                        <img src="@author.ImageUrl">
                                     </figure>
                                 </div>
                                 <div class="column">
                                     <p class="title">
-                                        <a asp-page="/Author" asp-route-authorId="@author.Id">
-                                        @author.Name
+                                        <a asp-page="/Author" asp-route-authorId="@author.Alias">
+                                        @author.Title
                                         </a>
                                         </p>
-                                    <p class="subtitle">@author.Description</p>
+                                    <div class="subtitle">@Html.Raw(author.Description)</div>
                                 </div>
                             </div>
                         </div>

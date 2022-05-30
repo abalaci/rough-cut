@@ -11,10 +11,12 @@
   // Variables are evaluated the first time they are accessed, and then reused across steps.
   "variables": {
     "adminUrlPrefix": "[js: configuration('OrchardCore_Admin:AdminUrlPrefix', 'Admin')]",
-    "authorMaraCrisanContentItemId": "js:uuid()",
+    "authorMaraCrisanContentItemId": "[js:uuid()]",
+    "authorJohnDoeContentItemId": "[js:uuid()]",
     "categoriesContentItemId": "4dsg59gyd54zp2ntr7b32bsm4x",
     "categoryInterviewContentItemId": "[js:uuid()]",
-    "categoryReviewContentItemId": "[js:uuid()]"
+    "categoryReviewContentItemId": "[js:uuid()]",
+    "originallyCreatedUtc": "2022-05-11T11:57:32Z"
   },
   "steps": [
     {
@@ -181,11 +183,20 @@
           },
           "ContentTypePartDefinitionRecords": [
             {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
               "PartName": "AliasPart",
               "Name": "AliasPart",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "0"
+                  "Position": "1"
                 }
               }
             },
@@ -194,7 +205,7 @@
               "Name": "ContentAuthor",
               "Settings": {
                 "ContentTypePartSettings": {
-                  "Position": "1"
+                  "Position": "2"
                 }
               }
             }
@@ -218,15 +229,6 @@
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "0"
-                }
-              }
-            },
-            {
-              "PartName": "FlowPart",
-              "Name": "FlowPart",
-              "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "1"
                 }
               }
             }
@@ -314,20 +316,6 @@
           "Name": "ContentAuthor",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
-            {
-              "FieldName": "TextField",
-              "Name": "Name",
-              "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Name"
-                },
-                "TextFieldSettings": {
-                  "Hint": "The name of the author.",
-                  "Required": true
-                },
-                "ContentIndexSettings": {}
-              }
-            },
             {
               "FieldName": "HtmlField",
               "Name": "Description",
@@ -473,28 +461,59 @@
     {
       "name": "content",
       "Data": [
-        //{
-        //  "ContentItemId": "[js: variables('categoriesContentItemId')]",
-        //  "Owner": "[js: parameters('AdminUserId')]",
-        //  "Author": "[js: parameters('AdminUsername')]",
-        //  "ContentType": "ContentAuthor",
-        //  "DisplayText": "Mara Crișan",
-        //  "Latest": true,
-        //  "Published": true,
-        //  "CreatedUtc": "2022-05-11T11:57:00Z",
-        //  "AliasPart": {
-        //    "Alias": "mara-crisan"
-        //  },
-        //  "AuthorPart": {
-        //    "Name": "Mara Crișan",
-        //    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        //    "Image": {
-        //      "Paths": [
-
-        //      ]
-        //    }
-        //  }
-        //},
+        {
+          "ContentItemId": "[js: variables('authorMaraCrisanContentItemId')]",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ContentType": "ContentAuthor",
+          "DisplayText": "Mara Crișan",
+          "Latest": true,
+          "Published": true,
+          "CreatedUtc": "[js: variables('originallyCreatedUtc')]",
+          "ModifiedUtc": "[js: variables('originallyCreatedUtc')]",
+          "PublishedUtc": "[js: variables('originallyCreatedUtc')]",
+          "TitlePart": {
+            "Title": "Mara Crișan"
+          },
+          "AliasPart": {
+            "Alias": "mara-crisan"
+          },
+          "ContentAuthor": {
+            "Description": {
+              "Html": "<p>Lorem ipsum dolor sit amet dolore et laoreet lorem quod eros kasd congue lorem gubergren luptatum et. Facilisis ut eos eirmod amet accusam gubergren rebum vero ea consequat et. Amet sanctus voluptua dolor lorem gubergren suscipit invidunt molestie lorem ea accumsan diam ea quod.</p>"
+            },
+            "Image": {
+              "Paths": [
+                "astronaut.jpg"
+              ]
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: variables('authorJohnDoeContentItemId')]",
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ContentType": "ContentAuthor",
+          "DisplayText": "John Doe",
+          "Latest": true,
+          "Published": true,
+          "TitlePart": {
+            "Title": "John Doe"
+          },
+          "AliasPart": {
+            "Alias": "john-doe"
+          },
+          "ContentAuthor": {
+            "Description": {
+              "Html": "<p>Lorem ipsum dolor sit amet voluptua nonummy. Aliquip praesent stet diam tempor molestie invidunt tation. Diam dolore tincidunt at et no dolor ipsum invidunt tempor amet. Consetetur et ipsum ut ipsum labore justo. Lorem dolor sanctus takimata. Liber takimata suscipit autem sit eirmod tempor accusam ea ea. Sit in sit justo commodo elitr amet nonumy amet. Ut sit sit dolor. Ipsum consequat et et tation invidunt dolores mazim invidunt ipsum et erat justo. Dolor eos clita takimata ut nibh amet ullamcorper. Stet congue takimata.</p>"
+            },
+            "Image": {
+              "Paths": [
+                "post-bg.jpg"
+              ]
+            }
+          }
+        },
         {
           "ContentItemId": "[js: variables('categoriesContentItemId')]",
           "Owner": "[js: parameters('AdminUserId')]",
@@ -503,6 +522,8 @@
           "DisplayText": "Categories",
           "Latest": true,
           "Published": true,
+          "CreatedUtc": "2022-05-11T11:57:00Z",
+          "PublishedUtc": "2022-05-11T11:57:00Z",
           "TitlePart": {
             "Title": "Categories"
           },
@@ -560,6 +581,7 @@
           "Latest": true,
           "Published": true,
           "CreatedUtc": "2022-05-11T11:57:00Z",
+          "PublishedUtc": "2022-05-11T11:57:00Z",
           "Owner": "[js: parameters('AdminUserId')]",
           "Author": "[js: parameters('AdminUsername')]",
           "TitlePart": {
@@ -667,8 +689,8 @@
           "SourcePath": "../wwwroot/assets/img/post-bg.jpg"
         },
         {
-          "TargetPath": "post-sample-image.jpg",
-          "SourcePath": "../wwwroot/assets/img/post-sample-image.jpg"
+          "TargetPath": "astronaut.jpg",
+          "SourcePath": "../wwwroot/assets/img/astronaut.jpg"
         }
       ]
     },

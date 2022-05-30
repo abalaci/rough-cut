@@ -1,4 +1,5 @@
 using OrchardCore;
+using OrchardCore.ContentManagement;
 using RoughCut.Web.Models;
 using RoughCut.Web.Repositories.Abstractions;
 
@@ -10,20 +11,32 @@ namespace RoughCut.Web.Repositories
 
         private readonly IOrchardHelper _orchard;
 
-        public CmsAuthorsRepository(IOrchardHelper orchardHelper)
+        //private readonly ISession _yesSqlSession;
+
+        public CmsAuthorsRepository(IOrchardHelper orchardHelper/*, ISession yesSqlSession*/)
         {
             _inMemoryAuthorsRepository = new InMemoryAuthorsRepository();
             _orchard = orchardHelper;
+            //_yesSqlSession = yesSqlSession;
         }
 
-        public Task<IReadOnlyList<Author>> GetAllAsync()
+        public async Task<IReadOnlyList<Author>> GetAllAsync()
         {
-            return _inMemoryAuthorsRepository.GetAllAsync();
+            var contentItems = await _orchard.GetRecentContentItemsByContentTypeAsync("ContentAuthor", maxContentItems: 30);
+
+            return contentItems.Select(item => item.ToAuthor(_orchard)).ToList();
         }
 
-        public Task<Author?> GetByIdAsync(string id)
+        public async Task<Author?> GetByAliasAsync(string alias)
         {
-            return _inMemoryAuthorsRepository.GetByIdAsync(id);
+            ContentItem contentItem = await _orchard.GetContentItemByAliasAsync(alias);
+
+            if (contentItem is null)
+            {
+                return default;
+            }
+
+            return contentItem.ToAuthor(_orchard);
         }
     }
 }

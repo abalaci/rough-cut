@@ -33,7 +33,7 @@ namespace RoughCut.Web.Pages
             {
                 Title = "Accusam sanctus iriure duis kasd.",
                 Description = "Dolore lorem volutpat et kasd ipsum rebum cum sea et ut magna. No duo sed elitr. Eos et te rebum. Labore lobortis diam sit autem diam tempor eirmod in sed elitr sit gubergren sea ut. Kasd takimata consequat sit clita eu facilisis lorem no et aliquyam clita iriure eirmod amet nulla labore lorem accusam.",
-                ImageUrl = new Uri("/assets/img/post-sample-image.jpg", UriKind.Relative),
+                ImageUrl = new Uri("/assets/img/astronaut.jpg", UriKind.Relative),
                 Created = new DateTime(year: 2022, month: 4, day: 29),
             }
         };

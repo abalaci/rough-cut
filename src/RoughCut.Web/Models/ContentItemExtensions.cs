@@ -1,7 +1,9 @@
+using OrchardCore;
 using OrchardCore.Alias.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.Html.Models;
 using OrchardCore.Title.Models;
+using RoughCut.Web.Models.ContentParts;
 
 namespace RoughCut.Web.Models
 {
@@ -22,12 +24,20 @@ namespace RoughCut.Web.Models
             };
         }
 
-        public static Author ToAuthor(this ContentItem contentItem)
+        public static Author ToAuthor(this ContentItem contentItem, IOrchardHelper orchard)
         {
             var aliasPart = contentItem.As<AliasPart>();
+            var authorPart = contentItem.As<ContentAuthor>();
             var titlePart = contentItem.As<TitlePart>();
+            string imagePath = authorPart.Image?.Paths.FirstOrDefault() ?? string.Empty;
 
-            return new Author();
+            return new Author
+            {
+                Alias = aliasPart.Alias,
+                Description = authorPart.Description?.Html ?? string.Empty,
+                ImageUrl = new Uri(orchard.AssetUrl(imagePath), UriKind.Relative),
+                Title = titlePart.Title
+            };
         }
 
         public static Category ToCategory(this ContentItem contentItem)
