@@ -51,7 +51,7 @@ namespace RoughCut.Web.Repositories
                     <p>Să le faci pe toate bine, să slujească filmului, să fie unic și să te reprezinte. Mi se pare foarte complicat și mi-a luat ceva să înțeleg toate astea. Până la urmă, dacă nu ar fi atât de complicat nici nu ar fi motivant să faci un film.</p>",
                     Categories = new[] { new Category { Alias = "interviu", Name = "Interviu" } },
                     Created = new DateTime(year: 2022, month: 5, day: 12),
-                    ImageUrl = new Uri("/assets/img/interviu-luchian-ciobanu_2022-05-12.png", UriKind.Relative),
+                    ImageUrl = new Uri("/assets/img/interviu-luchian-ciobanu.png", UriKind.Relative),
                     Title = "Interviu cu Luchian Ciobanu",
                 },
                 ["dolores-no-illum magna-sanctus-et-lorem-enim-te-quod-accusam-duo"] = new Article

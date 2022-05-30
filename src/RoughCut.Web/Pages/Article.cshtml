@@ -14,13 +14,16 @@
                     <figure class="image">
                         <img src="@Model.ImageUrl" />
                     </figure>
-                    <p class="subtitle is-uppercase is-underlined">
-                        @for (int i = 0; i < Model.Categories.Count - 1; i++)
-                        {
-                        <a asp-page="/Category" asp-route-alias="@Model.Categories[i].Alias">@Model.Categories[i].Name</a> <span>/</span>
-                        }
-                        <a asp-page="/Category" asp-route-alias="@Model.Categories[Model.Categories.Count -1].Alias">@Model.Categories[Model.Categories.Count - 1].Name</a>
-                    </p>
+                    @if (Model.Categories.Any())
+                    {
+                        <p class="subtitle is-uppercase is-underlined">
+                            @for (int i = 0; i < Model.Categories.Count - 1; i++)
+                            {
+                                <a asp-page="/Category" asp-route-alias="@Model.Categories[i].Alias">@Model.Categories[i].Name</a> <span>/</span>
+                            }
+                            <a asp-page="/Category" asp-route-alias="@Model.Categories[Model.Categories.Count -1].Alias">@Model.Categories[Model.Categories.Count - 1].Name</a>
+                        </p>
+                    }
                 </div>
             </div>
         </div>

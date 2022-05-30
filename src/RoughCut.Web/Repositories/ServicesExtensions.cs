@@ -7,8 +7,8 @@ namespace RoughCut.Web.Repositories
     {
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.TryAddScoped<IArticlesRepository, InMemoryArticlesRepository>();
-            services.TryAddScoped<IAuthorsRepository, InMemoryAuthorsRepository>();
+            services.TryAddScoped<IArticlesRepository, CmsArticlesRepository>();
+            services.TryAddScoped<IAuthorsRepository, CmsAuthorsRepository>();
             services.TryAddScoped<ICategoriesRepository, CmsCategoriesRepository>();
 
             return services;
