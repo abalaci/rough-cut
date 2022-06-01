@@ -54,5 +54,12 @@ namespace RoughCut.Web.Repositories
                 .Select(async item => await item.ToArticleAsync(_orchard))
                 .Select(t => t.Result).ToArray();
         }
+
+        public async Task<Article[]> GetByCategoryAsync(string categoryAlias)
+        {
+            var articles = await GetAllAsync();
+
+            return articles.Where(a => a.Categories.Any(c => c.Alias == categoryAlias)).ToArray();
+        }
     }
 }

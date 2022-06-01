@@ -10,7 +10,7 @@
             <div class="column is-three-fifths-desktop">
                 <div class="content has-text-centered">
                     <p class="title">@Model.Title</p>
-                    <p class="subtitle">De @Model.Author.Title, în <date on="Model.CreatedDate"></date></p>
+                    <p class="subtitle">De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@Model.Author.Alias">@Model.Author.Title</a>, în <date on="Model.CreatedDate"></date></p>
                     <figure class="image">
                         <img src="@Model.ImageUrl" />
                     </figure>

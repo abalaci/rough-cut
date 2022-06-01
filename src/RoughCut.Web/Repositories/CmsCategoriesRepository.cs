@@ -25,7 +25,6 @@ namespace RoughCut.Web.Repositories
 
         public async Task<Category?> GetByAliasAsync(string alias)
         {
-            // TODO: Implement a more efficient way of getting a category term by its alias.
             IReadOnlyList<Category> categories = await GetAllAsync();
 
             return categories.FirstOrDefault(c => string.Equals(c.Alias, alias, StringComparison.OrdinalIgnoreCase));
