@@ -15,9 +15,9 @@ namespace RoughCut.Web.Pages
 
         public string Title { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
-        public Uri ImageUrl { get; set; } = new Uri("/assets/img/post-sample-image.jpg", UriKind.Relative);
+        public Uri ImageUrl { get; set; } = new Uri("/assets/img/astronaut.jpg", UriKind.Relative);
 
-        public Author Author { get; set; } = new Author { Name = "John Doe" };
+        public Author Author { get; set; } = new Author { Title = "John Doe" };
 
         public DateTimeOffset Created { get; set; } = new DateTime(year: 2022, month: 05, day: 03);
 
@@ -40,7 +40,7 @@ namespace RoughCut.Web.Pages
             Author = article.Author;
             Body = article.Body;
             Categories = article.Categories;
-            Created = article.Created;
+            Created = article.PublishedUtc;
             ImageUrl = article.ImageUrl;
             Title = article.Title;
 

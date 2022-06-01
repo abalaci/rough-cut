@@ -1,9 +1,18 @@
+# Application data directory
+App_Data/
+
 # Build results
 bin/
 obj/
 
+# ImageSharp cache directory
+is-cache/
+
 # Node.js modules
 node_modules/
+
+# Placeholder files
+.placeholder
 
 # User-specific files
 *.user

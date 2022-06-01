@@ -6,6 +6,6 @@ namespace RoughCut.Web.Repositories.Abstractions
     {
         Task<Category?> GetByAliasAsync(string alias);
 
-        Task<IEnumerable<Category>> GetAllAsync();
+        Task<IReadOnlyList<Category>> GetAllAsync();
     }
 }

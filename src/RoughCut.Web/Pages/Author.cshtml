@@ -1,6 +1,5 @@
 @page "/autori/{authorId}"
 @model RoughCut.Web.Pages.AuthorModel
-@using RoughCut.Web.Models
 @{
     ViewData[ViewDataKey.Title] = "Author";
 }
@@ -10,13 +9,17 @@
         <div class="columns is-centered">
             <div class="column is-three-fifths-desktop">
                 <div class="content has-text-centered">
-                    <h1 class="title">
-                        <span class="icon is-large">
-                            <i class="bi bi-person-circle"></i>
-                        </span>
-                        <span>@Model.Name</span>
-                    </h1>
-                    <p class="subtitle">@Model.Description</p>
+                    <div class="columns is-vcentered">
+                        <div class="column">
+                            <figure class="image">
+                                <img src="@Model.ImageUrl">
+                            </figure>
+                        </div>
+                        <div class="column has-text-left">
+                            <h1 class="title">@Model.Name</h1>
+                        </div>
+                    </div>
+                    <div class="subtitle">@Html.Raw(Model.Description)</div>
                 </div>
             </div>
         </div>
@@ -45,7 +48,7 @@
                                         </a>
                                     </p>
                                     <p class="subtitle">@article.Description</p>
-                                    <p>În <date on="article.CreatedDate"></date></p>
+                                    <p>În <date on="article.PublishedDate"></date></p>
                                 </div>
                             </div>
                         </div>

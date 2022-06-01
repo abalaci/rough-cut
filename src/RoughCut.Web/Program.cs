@@ -1,15 +1,10 @@
+using RoughCut.Web.Models.ContentParts;
 using RoughCut.Web.Repositories;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddOrchardCms();
+builder.Services.AddContentParts();
 builder.Services.AddRepositories();
-
-IMvcBuilder mvcBuilder = builder.Services
-    .AddRazorPages();
-
-if (builder.Environment.IsDevelopment())
-{
-    mvcBuilder.AddRazorRuntimeCompilation();
-}
 
 WebApplication app = builder.Build();
 
@@ -20,8 +15,7 @@ if (builder.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseRouting();
 
-app.MapRazorPages();
+app.UseOrchardCore();
 
 app.Run();

@@ -9,5 +9,7 @@ namespace RoughCut.Web.Repositories.Abstractions
         Task<Article?> GetByAliasAsync(string alias);
 
         Task<Article[]> GetByAuthorAsync(string authorId);
+
+        Task<Article[]> GetByCategoryAsync(string categoryAlias);
     }
 }

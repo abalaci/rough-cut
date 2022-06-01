@@ -27,7 +27,7 @@ namespace RoughCut.Web.Pages
 
         public async Task<IActionResult> OnGet(string authorId)
         {
-            Author? author = await _authorsRepository.GetByIdAsync(authorId);
+            Author? author = await _authorsRepository.GetByAliasAsync(authorId);
 
             if (author is null)
             {
@@ -35,7 +35,8 @@ namespace RoughCut.Web.Pages
             }
 
             Description = author.Description;
-            Name = author.Name;
+            ImageUrl = author.ImageUrl;
+            Name = author.Title;
 
             Articles = await _articlesRepository.GetByAuthorAsync(authorId);
 

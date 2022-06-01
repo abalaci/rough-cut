@@ -19,7 +19,7 @@ namespace RoughCut.Web.Pages
 
         public async Task OnGet()
         {
-            var articles = await _articlesRepository.GetAllAsync();
+            Article[] articles = await _articlesRepository.GetAllAsync();
 
             LatestArticle = articles.FirstOrDefault();
             Articles = articles;
