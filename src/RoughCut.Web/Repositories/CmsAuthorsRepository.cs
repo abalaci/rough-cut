@@ -7,31 +7,28 @@ namespace RoughCut.Web.Repositories
 {
     internal class CmsAuthorsRepository : IAuthorsRepository
     {
-        private readonly InMemoryAuthorsRepository _inMemoryAuthorsRepository;
-
         private readonly IOrchardHelper _orchard;
 
-        //private readonly ISession _yesSqlSession;
-
-        public CmsAuthorsRepository(IOrchardHelper orchardHelper/*, ISession yesSqlSession*/)
+        public CmsAuthorsRepository(IOrchardHelper orchardHelper)
         {
-            _inMemoryAuthorsRepository = new InMemoryAuthorsRepository();
             _orchard = orchardHelper;
-            //_yesSqlSession = yesSqlSession;
         }
 
         public async Task<IReadOnlyList<Author>> GetAllAsync()
         {
-            var contentItems = await _orchard.GetRecentContentItemsByContentTypeAsync("ContentAuthor", maxContentItems: 30);
+            var contentItems = await _orchard.QueryContentItemsAsync(query =>
+                query.Where(item => item.ContentType == "ContentAuthor" && item.Published));
 
-            return contentItems.Select(item => item.ToAuthor(_orchard)).ToList();
+            return contentItems.Select(item => item.ToAuthor(_orchard))
+                .OrderBy(a => a.Title)
+                .ToList();
         }
 
         public async Task<Author?> GetByAliasAsync(string alias)
         {
-            ContentItem contentItem = await _orchard.GetContentItemByAliasAsync(alias);
+            ContentItem? contentItem = await _orchard.GetContentItemByAliasAsync(alias);
 
-            if (contentItem is null)
+            if (contentItem is null || contentItem.ContentType != "ContentAuthor")
             {
                 return default;
             }

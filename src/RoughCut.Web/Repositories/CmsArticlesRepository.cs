@@ -1,25 +1,28 @@
 using OrchardCore;
 using OrchardCore.ContentManagement;
 using RoughCut.Web.Models;
+using RoughCut.Web.Models.ContentParts;
 using RoughCut.Web.Repositories.Abstractions;
 
 namespace RoughCut.Web.Repositories
 {
     internal class CmsArticlesRepository : IArticlesRepository
     {
-        private readonly InMemoryArticlesRepository _inMemoryArticlesRepository;
-
         private readonly IOrchardHelper _orchard;
 
         public CmsArticlesRepository(IOrchardHelper orchardHelper)
         {
-            _inMemoryArticlesRepository = new InMemoryArticlesRepository();
             _orchard = orchardHelper;
         }
 
-        public Task<Article[]> GetAllAsync()
+        public async Task<Article[]> GetAllAsync()
         {
-            return _inMemoryArticlesRepository.GetAllAsync();
+            var contentItems = await _orchard.QueryContentItemsAsync(query =>
+                query.Where(item => item.ContentType == "Article" && item.Published == true)
+                    .OrderByDescending(item => item.PublishedUtc));
+
+            return contentItems.Select(async item => await item.ToArticleAsync(_orchard))
+                .Select(t => t.Result).ToArray();
         }
 
         public async Task<Article?> GetByAliasAsync(string alias)
@@ -31,12 +34,25 @@ namespace RoughCut.Web.Repositories
                 return default;
             }
 
-            return contentItem.ToArticle();
+            return await contentItem.ToArticleAsync(_orchard);
         }
 
-        public Task<Article[]> GetByAuthorAsync(string authorId)
+        public async Task<Article[]> GetByAuthorAsync(string authorId)
         {
-            return _inMemoryArticlesRepository.GetByAuthorAsync(authorId);
+            ContentItem? authorItem = await _orchard.GetContentItemByAliasAsync(authorId);
+
+            if (authorItem?.ContentType != "ContentAuthor")
+            {
+                return Array.Empty<Article>();
+            }
+
+            var contentItems = await _orchard.QueryContentItemsAsync(query =>
+                query.Where(item => item.ContentType == "Article" && item.Published == true)
+                    .OrderByDescending(item => item.PublishedUtc));
+
+            return contentItems.Where(c => c.As<ArticlePart>()?.Author?.ContentItemIds?.Contains(authorItem.ContentItemId) ?? false)
+                .Select(async item => await item.ToArticleAsync(_orchard))
+                .Select(t => t.Result).ToArray();
         }
     }
 }

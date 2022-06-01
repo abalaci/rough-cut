@@ -6,6 +6,7 @@ namespace RoughCut.Web.Models.ContentParts
     {
         public static IServiceCollection AddContentParts(this IServiceCollection services)
         {
+            services.AddContentPart<ArticlePart>();
             services.AddContentPart<ContentAuthor>();
 
             return services;
