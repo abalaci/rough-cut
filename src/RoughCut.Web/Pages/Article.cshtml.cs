@@ -15,7 +15,7 @@ namespace RoughCut.Web.Pages
 
         public string Title { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
-        public Uri ImageUrl { get; set; } = new Uri("/assets/img/astronaut.jpg", UriKind.Relative);
+        public Uri ImageUrl { get; set; } = new Uri("/", UriKind.Relative);
 
         public Author Author { get; set; } = new Author { Title = "John Doe" };
 

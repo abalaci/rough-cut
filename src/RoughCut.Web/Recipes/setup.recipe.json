@@ -27,6 +27,7 @@
         "OrchardCore.Diagnostics",
         "OrchardCore.DynamicCache",
         "OrchardCore.Features",
+        "OrchardCore.Https",
         "OrchardCore.Navigation",
         "OrchardCore.Recipes",
         "OrchardCore.Resources",
@@ -37,31 +38,22 @@
 
         // Content Management
         "OrchardCore.Alias",
-        "OrchardCore.AdminMenu",
         "OrchardCore.Html",
         "OrchardCore.ContentFields",
         "OrchardCore.ContentPreview",
         "OrchardCore.Contents",
-        "OrchardCore.Contents.FileContentDefinition",
+        // "OrchardCore.Contents.FileContentDefinition",
         "OrchardCore.ContentTypes",
         "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
         "OrchardCore.Deployment.Remote",
-        "OrchardCore.Feeds",
-        "OrchardCore.Flows",
         "OrchardCore.Indexing",
-        "OrchardCore.Layers",
         "OrchardCore.Lucene",
         "OrchardCore.Lists",
         "OrchardCore.Media",
-        "OrchardCore.Menu",
-        "OrchardCore.Placements",
         "OrchardCore.Queries",
-        "OrchardCore.Shortcodes.Templates",
-        "OrchardCore.Rules",
         "OrchardCore.Taxonomies",
         "OrchardCore.Title",
-        "OrchardCore.Widgets",
 
         // Themes
         "TheAdmin"
@@ -507,7 +499,7 @@
             },
             "Image": {
               "Paths": [
-                "astronaut.jpg"
+                "astronaut-bg.jpg"
               ]
             }
           }
@@ -708,14 +700,6 @@
           "SourcePath": "../wwwroot/assets/img/interviu-luchian-ciobanu.png"
         },
         {
-          "TargetPath": "about-bg.jpg",
-          "SourcePath": "../wwwroot/assets/img/about-bg.jpg"
-        },
-        {
-          "TargetPath": "contact-bg.jpg",
-          "SourcePath": "../wwwroot/assets/img/contact-bg.jpg"
-        },
-        {
           "TargetPath": "home-bg.jpg",
           "SourcePath": "../wwwroot/assets/img/home-bg.jpg"
         },
@@ -724,8 +708,8 @@
           "SourcePath": "../wwwroot/assets/img/post-bg.jpg"
         },
         {
-          "TargetPath": "astronaut.jpg",
-          "SourcePath": "../wwwroot/assets/img/astronaut.jpg"
+          "TargetPath": "astronaut-bg.jpg",
+          "SourcePath": "../wwwroot/assets/img/astronaut-bg.jpg"
         }
       ]
     },
@@ -734,96 +718,9 @@
       "Queries": []
     },
     {
-      "name": "AdminMenu",
-      "data": [
-        {
-          "Id": "baef6f85ad13481681cde70ada401333",
-          "Name": "Admin menus",
-          "Enabled": true,
-          "MenuItems": [
-            {
-              "$type": "OrchardCore.AdminMenu.AdminNodes.PlaceholderAdminNode, OrchardCore.AdminMenu",
-              "LinkText": "Content",
-              "IconClass": null,
-              "PermissionNames": [],
-              "UniqueId": "3e590d44f8704e4588e272dd966ce291",
-              "Enabled": true,
-              "Text": null,
-              "Id": null,
-              "Href": null,
-              "Url": null,
-              "Position": null,
-              "LinkToFirstChild": true,
-              "LocalNav": false,
-              "Culture": null,
-              "Items": [
-                {
-                  "$type": "OrchardCore.AdminMenu.AdminNodes.LinkAdminNode, OrchardCore.AdminMenu",
-                  "LinkText": "Content Items",
-                  "LinkUrl": "[js: variables('adminUrlPrefix') + '/Contents/ContentItems/']",
-                  "IconClass": null,
-                  "UniqueId": "7b293d57056a4eebb3713f07f12c65d9",
-                  "Enabled": true,
-                  "Text": null,
-                  "Id": null,
-                  "Href": null,
-                  "Url": null,
-                  "Position": 0,
-                  "LinkToFirstChild": true,
-                  "LocalNav": false,
-                  "Culture": null,
-                  "Items": [],
-                  "Classes": []
-                },
-                {
-                  "$type": "OrchardCore.AdminMenu.AdminNodes.PlaceholderAdminNode, OrchardCore.AdminMenu",
-                  "LinkText": "Content Types",
-                  "IconClass": null,
-                  "PermissionNames": [],
-                  "UniqueId": "2f1fc33133334a1abf7d1a0516ee8b4e",
-                  "Enabled": true,
-                  "Text": null,
-                  "Id": null,
-                  "Href": null,
-                  "Url": null,
-                  "Position": 1,
-                  "Priority": 50,
-                  "LinkToFirstChild": true,
-                  "LocalNav": false,
-                  "Culture": null,
-                  "Items": [
-                    {
-                      "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
-                      "ShowAll": true,
-                      "IconClass": null,
-                      "ContentTypes": [],
-                      "UniqueId": "ee18224e1b814c638b0732678b74cfd9",
-                      "Enabled": true,
-                      "Text": null,
-                      "Id": null,
-                      "Href": null,
-                      "Url": null,
-                      "Position": null,
-                      "LinkToFirstChild": true,
-                      "LocalNav": false,
-                      "Culture": null,
-                      "Items": [],
-                      "Classes": []
-                    }
-                  ],
-                  "Classes": []
-                }
-              ],
-              "Classes": []
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "MediaProfiles",
       "MediaProfiles": {
-        "banner": {
+        "Banner": {
           "Hint": "A banner image (2048px x 600px, cropped)",
           "Width": 2048,
           "Height": 600,
