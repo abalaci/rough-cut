@@ -1,14 +1,24 @@
+using OrchardCore.Logging;
 using RoughCut.Web.Models.ContentParts;
 using RoughCut.Web.Repositories;
+using Serilog;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-builder.Services.AddOrchardCms();
-builder.Services.AddContentParts();
-builder.Services.AddRepositories();
+WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
 
-WebApplication app = builder.Build();
+webAppBuilder.Host
+    .ConfigureLogging(b => b.ClearProviders())
+    .UseSerilog((hostingContext, loggerConfiguration) =>
+    {
+        loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration).Enrich.FromLogContext();
+    });
 
-if (builder.Environment.IsDevelopment())
+webAppBuilder.Services.AddOrchardCms();
+webAppBuilder.Services.AddContentParts();
+webAppBuilder.Services.AddRepositories();
+
+WebApplication app = webAppBuilder.Build();
+
+if (webAppBuilder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
@@ -16,6 +26,6 @@ if (builder.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseOrchardCore();
+app.UseOrchardCore(appBuilder => appBuilder.UseSerilogTenantNameLogging());
 
 app.Run();

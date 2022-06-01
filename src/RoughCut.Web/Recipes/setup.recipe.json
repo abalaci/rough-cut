@@ -65,6 +65,22 @@
       "site": ""
     },
     {
+      "name": "settings",
+      "AdminSettings": {
+        "DisplayDarkMode": true,
+        "DisplayNewMenu": true
+      },
+      "HttpsSettings": {
+        "RequireHttps": true
+      },
+      "LuceneSettings": {
+        "SearchIndex": "Search",
+        "DefaultSearchFields": [
+          "Content.ContentItem.FullText"
+        ]
+      }
+    },
+    {
       "name": "ContentDefinition",
       "ContentTypes": [
         {
@@ -450,16 +466,6 @@
       ]
     },
     {
-      // Create the search settings.
-      "name": "Settings",
-      "LuceneSettings": {
-        "SearchIndex": "Search",
-        "DefaultSearchFields": [
-          "Content.ContentItem.FullText"
-        ]
-      }
-    },
-    {
       // Create the search index permissions.
       "name": "Roles",
       "Roles": [
@@ -720,8 +726,8 @@
     {
       "name": "MediaProfiles",
       "MediaProfiles": {
-        "Banner": {
-          "Hint": "A banner image (2048px x 600px, cropped)",
+        "banner": {
+          "Hint": "A banner image (2048x600 px, cropped)",
           "Width": 2048,
           "Height": 600,
           "Mode": 2,
