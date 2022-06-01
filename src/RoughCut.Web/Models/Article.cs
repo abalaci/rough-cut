@@ -14,9 +14,9 @@ namespace RoughCut.Web.Models
 
         public Uri ImageUrl { get; init; } = new Uri("/", UriKind.Relative);
 
-        public DateTimeOffset Created { get; init; }
+        public DateTimeOffset PublishedUtc { get; init; }
 
-        public DateOnly CreatedDate => DateOnly.FromDateTime(Created.Date);
+        public DateOnly PublishedDate => DateOnly.FromDateTime(PublishedUtc.Date);
 
         public Author Author { get; init; } = new Author();
     }

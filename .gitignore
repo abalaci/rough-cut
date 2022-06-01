@@ -1,3 +1,6 @@
+# Application data directory
+App_Data/
+
 # Build results
 bin/
 obj/

@@ -40,7 +40,7 @@ namespace RoughCut.Web.Pages
             Author = article.Author;
             Body = article.Body;
             Categories = article.Categories;
-            Created = article.Created;
+            Created = article.PublishedUtc;
             ImageUrl = article.ImageUrl;
             Title = article.Title;
 

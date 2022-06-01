@@ -4,7 +4,7 @@ using OrchardCore.Media.Fields;
 
 namespace RoughCut.Web.Models.ContentParts
 {
-    public class ContentAuthor : ContentPart
+    public class ContentAuthorPart : ContentPart
     {
         public HtmlField? Description { get; set; }
 

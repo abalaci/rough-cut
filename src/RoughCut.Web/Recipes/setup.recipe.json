@@ -186,8 +186,8 @@
               }
             },
             {
-              "PartName": "ContentAuthor",
-              "Name": "ContentAuthor",
+              "PartName": "ContentAuthorPart",
+              "Name": "ContentAuthorPart",
               "Settings": {
                 "ContentTypePartSettings": {
                   "Position": "2"
@@ -335,7 +335,7 @@
           ]
         },
         {
-          "Name": "ContentAuthor",
+          "Name": "ContentAuthorPart",
           "Settings": {},
           "ContentPartFieldDefinitionRecords": [
             {
@@ -677,7 +677,7 @@
             },
             "Image": {
               "Paths": [
-                "post-bg.jpg"
+                "home-bg.jpg"
               ],
               "MediaTexts": [
                 ""

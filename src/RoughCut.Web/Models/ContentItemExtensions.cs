@@ -19,13 +19,19 @@ namespace RoughCut.Web.Models
             string authorItemId = articlePart?.Author?.ContentItemIds?.FirstOrDefault() ?? string.Empty;
             ContentItem? authorItem = await orchard.GetContentItemByIdAsync(authorItemId);
 
+            var termItemIds = articlePart?.Categories?.TermContentItemIds ?? Enumerable.Empty<string>();
+            var termItems = termItemIds.Select(async t =>
+                await orchard.GetTaxonomyTermAsync(articlePart?.Categories?.TaxonomyContentItemId, t))
+                .Select(t => t.Result);
+
             return new Article
             {
                 Alias = aliasPart?.Alias ?? string.Empty,
                 Author = authorItem?.ToAuthor(orchard) ?? new Author(),
                 Body = articlePart?.Body?.Html ?? string.Empty,
+                Categories = termItems.Select(t => t.ToCategory()).ToList(),
                 Description = articlePart?.Subtitle?.Text ?? string.Empty,
-                Created = new DateTimeOffset(contentItem.PublishedUtc ?? default),
+                PublishedUtc = new DateTimeOffset(contentItem.PublishedUtc ?? default),
                 ImageUrl = new Uri(orchard.AssetUrl(imagePath), UriKind.Relative),
                 Title = titlePart?.Title ?? string.Empty
             };
@@ -34,7 +40,7 @@ namespace RoughCut.Web.Models
         public static Author ToAuthor(this ContentItem contentItem, IOrchardHelper orchard)
         {
             var aliasPart = contentItem.As<AliasPart>();
-            var authorPart = contentItem.As<ContentAuthor>();
+            var authorPart = contentItem.As<ContentAuthorPart>();
             var titlePart = contentItem.As<TitlePart>();
 
             string imagePath = authorPart.Image?.Paths?.FirstOrDefault() ?? string.Empty;

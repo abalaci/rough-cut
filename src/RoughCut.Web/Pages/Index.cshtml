@@ -22,7 +22,7 @@
                             </a>
                         </p>
                         <p class="subtitle">@Model.LatestArticle.Description</p>
-                        <p>De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@Model.LatestArticle.Author.Alias">@Model.LatestArticle.Author.Title</a>, în <date on="Model.LatestArticle.CreatedDate"></date></p>
+                        <p>De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@Model.LatestArticle.Author.Alias">@Model.LatestArticle.Author.Title</a>, în <date on="Model.LatestArticle.PublishedDate"></date></p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                                         </a>
                                         </p>
                                     <p class="subtitle">@article.Description</p>
-                                    <p>De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@article.Author.Alias">@article.Author.Title</a>, în <date on="article.CreatedDate"></date></p>
+                                    <p>De <a class="is-underlined" asp-page="/Author" asp-route-authorId="@article.Author.Alias">@article.Author.Title</a>, în <date on="article.PublishedDate"></date></p>
                                 </div>
                             </div>
                         </div>
