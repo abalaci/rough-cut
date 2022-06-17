@@ -31,6 +31,7 @@
         "OrchardCore.Navigation",
         "OrchardCore.Recipes",
         "OrchardCore.Resources",
+        "OrchardCore.ResponseCompression",
         "OrchardCore.Roles",
         "OrchardCore.Settings",
         "OrchardCore.Themes",
