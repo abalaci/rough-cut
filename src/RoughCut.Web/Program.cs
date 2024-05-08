@@ -3,22 +3,22 @@ using RoughCut.Web.Models.ContentParts;
 using RoughCut.Web.Repositories;
 using Serilog;
 
-WebApplicationBuilder webAppBuilder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-webAppBuilder.Host
-    .ConfigureLogging(b => b.ClearProviders())
-    .UseSerilog((hostingContext, loggerConfiguration) =>
-    {
-        loggerConfiguration.ReadFrom.Configuration(hostingContext.Configuration).Enrich.FromLogContext();
-    });
+builder.Logging.ClearProviders();
 
-webAppBuilder.Services.AddOrchardCms();
-webAppBuilder.Services.AddContentParts();
-webAppBuilder.Services.AddRepositories();
+builder.Services.AddSerilog((services, loggerConfiguration) => loggerConfiguration
+    .ReadFrom.Configuration(builder.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext());
 
-WebApplication app = webAppBuilder.Build();
+builder.Services.AddOrchardCms();
+builder.Services.AddContentParts();
+builder.Services.AddRepositories();
 
-if (webAppBuilder.Environment.IsDevelopment())
+WebApplication app = builder.Build();
+
+if (builder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
