@@ -44,12 +44,15 @@ namespace RoughCut.Web.Models
             var titlePart = contentItem.As<TitlePart>();
 
             string imagePath = authorPart.Image?.Paths?.FirstOrDefault() ?? string.Empty;
+            Uri? imageUrl = string.IsNullOrEmpty(imagePath)
+                ? default
+                : new Uri(orchard.AssetUrl(imagePath), UriKind.Relative);
 
             return new Author
             {
                 Alias = aliasPart.Alias,
                 Description = authorPart.Description?.Html ?? string.Empty,
-                ImageUrl = new Uri(orchard.AssetUrl(imagePath), UriKind.Relative),
+                ImageUrl = imageUrl,
                 Title = titlePart.Title
             };
         }

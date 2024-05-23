@@ -10,12 +10,15 @@
             <div class="column is-three-fifths-desktop">
                 <div class="content has-text-centered">
                     <div class="columns is-vcentered">
-                        <div class="column">
-                            <figure class="image">
-                                <img src="@Model.ImageUrl">
-                            </figure>
-                        </div>
-                        <div class="column has-text-left">
+                        @if (Model.ImageUrl != null)
+                        {
+                            <div class="column">
+                                <figure class="image">
+                                    <img src="@Model.ImageUrl">
+                                </figure>
+                            </div>
+                        }
+                        <div class="column has-text-center">
                             <h1 class="title">@Model.Name</h1>
                         </div>
                     </div>

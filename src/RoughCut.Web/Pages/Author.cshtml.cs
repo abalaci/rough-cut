@@ -15,7 +15,7 @@ namespace RoughCut.Web.Pages
 
         public string Description { get; set; } = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
-        public Uri ImageUrl { get; set; } = new Uri("/", UriKind.Relative);
+        public Uri? ImageUrl { get; set; }
 
         public string Name { get; set; } = string.Empty;
 

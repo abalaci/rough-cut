@@ -6,7 +6,7 @@ namespace RoughCut.Web.Models
 
         public string Description { get; init; } = string.Empty;
 
-        public Uri ImageUrl { get; init; } = new Uri("/", UriKind.Relative);
+        public Uri? ImageUrl { get; init; }
 
         public string Title { get; init; } = string.Empty;
     }
