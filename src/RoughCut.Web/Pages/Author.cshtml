@@ -39,14 +39,14 @@
                             <div class="columns is-vcentered">
                                 <div class="column is-one-third">
                                     <figure class="image">
-                                        <a asp-page="/Article">
+                                        <a asp-page="/Article" asp-route-alias="@article.Alias">
                                             <img src="@article.ImageUrl" alt="@article.Title" />
                                         </a>
                                     </figure>
                                 </div>
                                 <div class="column">
                                     <p class="title">
-                                        <a asp-page="/Article">
+                                        <a asp-page="/Article" asp-route-alias="@article.Alias">
                                             @article.Title
                                         </a>
                                     </p>

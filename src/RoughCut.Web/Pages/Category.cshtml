@@ -11,12 +11,12 @@
                 <div class="content has-text-centered">
                     <h1 class="is-uppercase has-text-white">@Model.Name</h1>
                     <figure class="image">
-                        <a asp-page="/Article">
+                        <a asp-page="/Article" asp-route-alias="@Model.LatestArticle.Alias">
                             <img src="@Model.LatestArticle.ImageUrl" alt="@Model.LatestArticle.Title" />
                         </a>
                     </figure>
                     <p class="title">
-                        <a asp-page="/Article">
+                        <a asp-page="/Article" asp-route-alias="@Model.LatestArticle.Alias">
                             @Model.LatestArticle.Title
                         </a>
                     </p>
@@ -38,14 +38,14 @@
                             <div class="columns is-vcentered">
                                 <div class="column is-one-third">
                                     <figure class="image">
-                                        <a asp-page="/Article">
+                                        <a asp-page="/Article" asp-route-alias="@article.Alias">
                                         <img src="@article.ImageUrl" alt="@article.Title" />
                                         </a>
                                     </figure>
                                 </div>
                                 <div class="column">
                                     <p class="title">
-                                        <a asp-page="/Article">
+                                        <a asp-page="/Article" asp-route-alias="@article.Alias">
                                         @article.Title
                                         </a>
                                         </p>
