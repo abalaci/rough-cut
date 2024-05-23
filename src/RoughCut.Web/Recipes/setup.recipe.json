@@ -11,7 +11,6 @@
   // Variables are evaluated the first time they are accessed, and then reused across steps.
   "variables": {
     "adminUrlPrefix": "[js: configuration('OrchardCore_Admin:AdminUrlPrefix', 'Admin')]",
-    "authorJohnDoeContentItemId": "[js:uuid()]",
     "authorMaraCrisanContentItemId": "[js:uuid()]",
     "categoriesContentItemId": "4dsg59gyd54zp2ntr7b32bsm4x",
     "categoryInterviewContentItemId": "[js:uuid()]",
@@ -43,7 +42,7 @@
         "OrchardCore.ContentFields",
         "OrchardCore.ContentPreview",
         "OrchardCore.Contents",
-        // "OrchardCore.Contents.FileContentDefinition",
+        "OrchardCore.Contents.FileContentDefinition",
         "OrchardCore.ContentTypes",
         "OrchardCore.CustomSettings",
         "OrchardCore.Deployment",
@@ -503,36 +502,6 @@
           "ContentAuthorPart": {
             "Description": {
               "Html": "<p>Lorem ipsum dolor sit amet dolore et laoreet lorem quod eros kasd congue lorem gubergren luptatum et. Facilisis ut eos eirmod amet accusam gubergren rebum vero ea consequat et. Amet sanctus voluptua dolor lorem gubergren suscipit invidunt molestie lorem ea accumsan diam ea quod.</p>"
-            },
-            "Image": {
-              "Paths": [
-                "astronaut-bg.jpg"
-              ]
-            }
-          }
-        },
-        {
-          "ContentItemId": "[js: variables('authorJohnDoeContentItemId')]",
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "ContentType": "ContentAuthor",
-          "DisplayText": "John Doe",
-          "Latest": true,
-          "Published": true,
-          "TitlePart": {
-            "Title": "John Doe"
-          },
-          "AliasPart": {
-            "Alias": "john-doe"
-          },
-          "ContentAuthorPart": {
-            "Description": {
-              "Html": "<p>Lorem ipsum dolor sit amet voluptua nonummy. Aliquip praesent stet diam tempor molestie invidunt tation. Diam dolore tincidunt at et no dolor ipsum invidunt tempor amet. Consetetur et ipsum ut ipsum labore justo. Lorem dolor sanctus takimata. Liber takimata suscipit autem sit eirmod tempor accusam ea ea. Sit in sit justo commodo elitr amet nonumy amet. Ut sit sit dolor. Ipsum consequat et et tation invidunt dolores mazim invidunt ipsum et erat justo. Dolor eos clita takimata ut nibh amet ullamcorper. Stet congue takimata.</p>"
-            },
-            "Image": {
-              "Paths": [
-                "post-bg.jpg"
-              ]
             }
           }
         },
@@ -643,55 +612,6 @@
             "Categories": {
               "TermContentItemIds": [
                 "[js: variables('categoryInterviewContentItemId')]"
-              ],
-              "TaxonomyContentItemId": "[js: variables('categoriesContentItemId')]"
-            }
-          }
-        },
-        {
-          "ContentType": "Article",
-          "ContentItemId": "[js: uuid()]",
-          "DisplayText": "Lorem Ipsum Dolor sit Amet",
-          "Latest": true,
-          "Published": true,
-          "Owner": "[js: parameters('AdminUserId')]",
-          "Author": "[js: parameters('AdminUsername')]",
-          "TitlePart": {
-            "Title": "Lorem Ipsum Dolor sit Amet"
-          },
-          "AliasPart": {
-            "Alias": "lorem-ipsum-dolor-sit-amet"
-          },
-          "ArticlePart": {
-            "Body": {
-              "Html": "<p>Lorem ipsum dolor sit amet sit suscipit nulla dolores tempor nonumy nonumy voluptua erat et ipsum. Ut exerci facilisis amet. Erat exerci erat takimata erat. Laoreet iriure quod tincidunt eum voluptua qui praesent quis. Amet justo no odio. Sadipscing ut aliquyam zzril voluptua labore eos justo consectetuer eirmod est. Hendrerit magna magna at tempor accusam no diam. Minim imperdiet veniam erat consetetur vel hendrerit ut feugait mazim. Sed diam ut nonumy lorem hendrerit ipsum minim dolore eos sea possim dolor delenit ipsum accusam euismod aliquyam.</p><p>Amet ad et ex. Molestie magna nobis magna nulla labore diam augue eirmod lorem clita dolor elitr iriure augue dolor clita molestie. Aliquip takimata accusam et sit clita lorem sanctus esse dolor amet dolor sanctus qui luptatum eum. Accusam amet lorem diam feugiat voluptua ipsum rebum ipsum vero consectetuer dolor. Minim eirmod consetetur sit sit dolores praesent consetetur est nostrud. Diam ullamcorper justo labore sit dolore clita sea ipsum dolor. Et magna rebum eirmod. Vel est sadipscing ut magna laoreet est erat clita invidunt ut eos illum aliquyam dolores ea aliquip no erat. Takimata dolore clita consequat stet no lorem sed amet sanctus rebum tempor takimata invidunt magna hendrerit clita ipsum. Magna dignissim diam nostrud velit et hendrerit exerci justo ut ea imperdiet accusam ut dolore vero nisl. Wisi in et justo imperdiet erat takimata. Et ea congue ipsum imperdiet laoreet et gubergren vero accusam dolores vulputate feugait. Mazim autem molestie consetetur ut consetetur elitr dolor voluptua clita consequat te. Erat sed tempor no. Nisl ea invidunt ut rebum et. Kasd eum clita sed eu sea clita ut eirmod sit. Ex dolore sed clita erat magna nonumy ipsum qui sit et liber magna et erat nonumy. Facilisis elitr justo ut dolore erat sadipscing vel aliquyam sed veniam est illum ullamcorper no amet ipsum.</p><p>Dolor facilisi qui diam elit. Labore dignissim ut at magna et sit ipsum et vero. Dolore tincidunt elitr autem ut lorem. Exerci no consectetuer labore voluptua feugiat kasd erat duo sanctus tempor ea at lorem lorem.</p>"
-            },
-            "Author": {
-              "ContentItemIds": [
-                "[js: variables('authorJohnDoeContentItemId')]"
-              ]
-            },
-            "Subtitle": {
-              "Text": "Lorem ipsum dolor sit amet, consectetur adipscing elit."
-            },
-            "Image": {
-              "Paths": [
-                "home-bg.jpg"
-              ],
-              "MediaTexts": [
-                ""
-              ],
-              "Anchors": [
-                {
-                  "X": 0.5,
-                  "Y": 0.5
-                }
-              ]
-            },
-            "Categories": {
-              "TermContentItemIds": [
-                "[js: variables('categoryInterviewContentItemId')]",
-                "[js: variables('categoryReviewContentItemId')]"
               ],
               "TaxonomyContentItemId": "[js: variables('categoriesContentItemId')]"
             }
